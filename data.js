@@ -5,7 +5,7 @@ window.MODEL_DATA = {
     "generated": "2026-10-06",
     "baselineHits": 1.7777777777777777,
     "baselineRate": 0.2222222222222222,
-    "modelVersion": "V3"
+    "modelVersion": "V4"
   },
   "status": {
     "v1": {
@@ -21,6 +21,11 @@ window.MODEL_DATA = {
     "v3": {
       "code": "NO_VERIFIED_EDGE",
       "label": "Adaptive ensemble, baseline guarded",
+      "tone": "danger"
+    },
+    "v4": {
+      "code": "UNIFORM_BASELINE_ONLY",
+      "label": "No pre-draw 4D-process candidate passed validation",
       "tone": "danger"
     }
   },
@@ -90,6 +95,17 @@ window.MODEL_DATA = {
       "p": 0.5470264359172025,
       "brier": 0.17292605892512472,
       "logloss": 0.5299639346237339
+    },
+    {
+      "model": "V4",
+      "period": "2026 blocked bridge",
+      "type": "Pre-draw research bridge · not deployed",
+      "draws": 125,
+      "meanHits": 1.84,
+      "rate": 0.23,
+      "p": 0.26703559356536266,
+      "brier": 0.17282810380812164,
+      "logloss": 0.5296733552672912
     }
   ],
   "forecasts": {
@@ -493,6 +509,16 @@ window.MODEL_DATA = {
         "from": "2026-01-03",
         "to": "2026-10-04"
       }
+    },
+    "v4": {
+      "label": "V4 gated deployment output",
+      "description": "Validation-report policy is enforced: because no non-uniform 4D-process model beat the fair benchmark on locked year-by-year proper scores, V4 issues no ranked deployment set. Every Life number remains at the fair marginal probability 8/36 = 22.22%.",
+      "sets": [],
+      "top12": [],
+      "uniformProbability": 0.2222222222222222,
+      "deployment": "UNIFORM_BASELINE_ONLY",
+      "researchCandidate": "long_a200",
+      "researchNote": "The blocked long-history Bayesian prefix bridge is retained only for diagnostics; it is not a deployable forecast."
     }
   },
   "history": {
@@ -866,6 +892,133 @@ window.MODEL_DATA = {
         "hits": 1,
         "guard": 0.5
       }
+    ],
+    "v4": [
+      {
+        "date": "2026-09-26",
+        "selected": [
+          29,
+          15,
+          30,
+          35,
+          5,
+          26,
+          28,
+          4
+        ],
+        "actual": [
+          1,
+          5,
+          7,
+          10,
+          14,
+          18,
+          22,
+          35
+        ],
+        "hits": 2,
+        "blocked": true
+      },
+      {
+        "date": "2026-09-27",
+        "selected": [
+          15,
+          29,
+          35,
+          30,
+          5,
+          28,
+          26,
+          4
+        ],
+        "actual": [
+          2,
+          10,
+          14,
+          15,
+          20,
+          21,
+          31,
+          33
+        ],
+        "hits": 1,
+        "blocked": true
+      },
+      {
+        "date": "2026-09-30",
+        "selected": [
+          15,
+          29,
+          35,
+          30,
+          5,
+          28,
+          26,
+          4
+        ],
+        "actual": [
+          10,
+          11,
+          20,
+          24,
+          32,
+          33,
+          34,
+          36
+        ],
+        "hits": 0,
+        "blocked": true
+      },
+      {
+        "date": "2026-10-03",
+        "selected": [
+          15,
+          29,
+          30,
+          35,
+          5,
+          28,
+          26,
+          4
+        ],
+        "actual": [
+          3,
+          7,
+          8,
+          10,
+          11,
+          12,
+          19,
+          21
+        ],
+        "hits": 0,
+        "blocked": true
+      },
+      {
+        "date": "2026-10-04",
+        "selected": [
+          15,
+          29,
+          30,
+          35,
+          5,
+          28,
+          26,
+          4
+        ],
+        "actual": [
+          1,
+          2,
+          15,
+          17,
+          21,
+          28,
+          30,
+          31
+        ],
+        "hits": 3,
+        "blocked": true
+      }
     ]
   },
   "methods": {
@@ -887,6 +1040,14 @@ window.MODEL_DATA = {
       "Expert weights adapt using cumulative Brier loss; poor horizons lose weight automatically.",
       "A 30-draw calibration guardrail reduces confidence when recent raw ensemble Brier is worse than the uniform benchmark.",
       "2019 and the recent 65-draw 2026 evaluation still fail the deployment gate, so V3 remains research-only."
+    ],
+    "v4": [
+      "Objective follows the independent validation recommendation: search for genuinely pre-draw information in the underlying 4D process, not more Life-history complexity.",
+      "Uses 1,050 chronological 4D draws from 2020-01-01 through 2026-10-04 and tests leading-prefix behavior by prize category.",
+      "Candidate families include Bayesian long-history frequencies, rolling recency, short/long regime blends, weekday-conditioned models, and regularized serial-feature logistic models.",
+      "2024 is used for model selection, 2025 for confirmation, and 2026 as the locked final test. Uniform 00–99 prefix probabilities are always retained as the null model.",
+      "The best non-uniform prefix candidate was worse than uniform in 2024, 2025 and 2026, so the deployment layer is forced back to uniform 8/36 Life probabilities.",
+      "A research-only 4D→Life bridge is displayed separately; it cannot pass the gate merely because its 2026 Top-8 average happened to exceed 1.778."
     ]
   },
   "dataUsed": {
@@ -951,5 +1112,221 @@ window.MODEL_DATA = {
     "currentGuard": 0.5,
     "recentRawBrier30": 0.1731833712565482,
     "uniformBrier": 0.1728395061728395
+  },
+  "v4": {
+    "objective": "Information discovery in pre-draw 4D process variables, with hard fallback to the fair Life baseline when proper-score validation fails.",
+    "cutoff": "2026-10-04",
+    "data": {
+      "fourDDraws": 1050,
+      "fourDFrom": "2020-01-01",
+      "fourDTo": "2026-10-04",
+      "lifeBridgeDraws2026": 125,
+      "yearCounts": {
+        "2020": 126,
+        "2021": 126,
+        "2022": 179,
+        "2023": 165,
+        "2024": 164,
+        "2025": 165,
+        "2026": 125
+      }
+    },
+    "candidateSearch": {
+      "nonUniformConfigurations": 53,
+      "families": [
+        "Bayesian long-history prefix frequency",
+        "rolling recent prefix frequency",
+        "short/long regime blend",
+        "weekday-conditioned hierarchical frequency",
+        "regularized serial-feature logistic"
+      ],
+      "selectionYear": 2024,
+      "confirmationYear": 2025,
+      "finalTestYear": 2026,
+      "selectedResearchCandidate": "long_a200"
+    },
+    "prefixValidation": {
+      "metric": "100-class leading-prefix categorical prediction across Top-3, Special and Consolation 4D groups",
+      "uniform": {
+        "2024": {
+          "logloss": 4.60517018598808,
+          "brier": 0.99
+        },
+        "2025": {
+          "logloss": 4.60517018598808,
+          "brier": 0.99
+        },
+        "2026": {
+          "logloss": 4.605170185988082,
+          "brier": 0.9899999999999978
+        }
+      },
+      "bestNonUniform": {
+        "2024": {
+          "logloss": 4.61582063432249,
+          "brier": 0.9902068481533502,
+          "deltaLogloss": 0.010650448334409646,
+          "deltaBrier": 0.0002068481533501476
+        },
+        "2025": {
+          "logloss": 4.611906276598083,
+          "brier": 0.990128551672329,
+          "deltaLogloss": 0.0067360906100031315,
+          "deltaBrier": 0.00012855167232894704
+        },
+        "2026": {
+          "logloss": 4.611493910842934,
+          "brier": 0.9901227405337123,
+          "deltaLogloss": 0.0063237248548517755,
+          "deltaBrier": 0.0001227405337145271
+        },
+        "name": "long_a200"
+      },
+      "regularizedLogistic": {
+        "interpretation": "Serial, recency, weekday and category features did not improve locked-year proper scores; the family was rejected."
+      }
+    },
+    "researchBridge": {
+      "status": "BLOCKED_DIAGNOSTIC",
+      "draws": 125,
+      "meanHits": 1.84,
+      "hitRate": 0.23,
+      "pOneSided": 0.26703559356536266,
+      "brier": 0.17282810380812164,
+      "logloss": 0.5296733552672912,
+      "uniform": {
+        "meanHits": 1.7777777777777777,
+        "brier": 0.1728395061728395,
+        "logloss": 0.5297061990576545
+      },
+      "currentTop12": [
+        {
+          "number": 15,
+          "score": 0.22542030088879883
+        },
+        {
+          "number": 29,
+          "score": 0.225417156723707
+        },
+        {
+          "number": 30,
+          "score": 0.22529468662499372
+        },
+        {
+          "number": 35,
+          "score": 0.22521445394848139
+        },
+        {
+          "number": 5,
+          "score": 0.22484522197656656
+        },
+        {
+          "number": 28,
+          "score": 0.22462616914778988
+        },
+        {
+          "number": 26,
+          "score": 0.2244382426834198
+        },
+        {
+          "number": 4,
+          "score": 0.22366269641066142
+        },
+        {
+          "number": 3,
+          "score": 0.22279255211064272
+        },
+        {
+          "number": 19,
+          "score": 0.222759673364671
+        },
+        {
+          "number": 10,
+          "score": 0.2227214494395312
+        },
+        {
+          "number": 8,
+          "score": 0.22270893015380275
+        }
+      ],
+      "currentResearchSets": [
+        {
+          "id": 1,
+          "numbers": [
+            15,
+            29,
+            30,
+            35,
+            5,
+            28,
+            26,
+            4
+          ],
+          "score": 0.2248648660505523
+        },
+        {
+          "id": 2,
+          "numbers": [
+            3,
+            19,
+            10,
+            8,
+            18,
+            22,
+            11,
+            12
+          ],
+          "score": 0.22261020495726164
+        },
+        {
+          "id": 3,
+          "numbers": [
+            16,
+            1,
+            21,
+            24,
+            6,
+            36,
+            9,
+            13
+          ],
+          "score": 0.22165870335638058
+        },
+        {
+          "id": 4,
+          "numbers": [
+            23,
+            32,
+            33,
+            7,
+            2,
+            34,
+            31,
+            17
+          ],
+          "score": 0.22093996421913534
+        },
+        {
+          "id": 5,
+          "numbers": [
+            20,
+            14,
+            25,
+            15,
+            29,
+            30,
+            35,
+            27
+          ],
+          "score": 0.2225945861899177
+        }
+      ]
+    },
+    "deploymentGate": {
+      "status": "UNIFORM_BASELINE_ONLY",
+      "reason": "No non-uniform 4D-process candidate improves proper scores on multiple locked eras; the 2026 research bridge lift is not statistically significant.",
+      "deployedProbabilityPerNumber": 0.2222222222222222,
+      "rankedSetsIssued": false
+    }
   }
 };
