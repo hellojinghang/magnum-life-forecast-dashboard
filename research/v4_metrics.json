@@ -1,0 +1,150 @@
+{
+  "version": "V4",
+  "objective": "Follow the independent validation recommendation: search for genuinely pre-draw information in the underlying Magnum 4D process. Do not add Life-history complexity merely to improve retrospective fit.",
+  "cutoff": "2026-10-04",
+  "officialProcessFacts": {
+    "underlyingNumbersPerDraw": 23,
+    "lifeDerivedFrom4D": true
+  },
+  "data": {
+    "fourDDraws": 1050,
+    "from": "2020-01-01",
+    "to": "2026-10-04",
+    "yearCounts": {
+      "2020": 126,
+      "2021": 126,
+      "2022": 179,
+      "2023": 165,
+      "2024": 164,
+      "2025": 165,
+      "2026": 125
+    },
+    "lifeRowsForBridge2026": 125
+  },
+  "validationDesign": {
+    "development": "2020-2023",
+    "selection": "2024",
+    "confirmation": "2025",
+    "lockedTest": "2026",
+    "null": "Uniform 00-99 leading-prefix probability within each 4D result",
+    "deploymentRule": "A non-uniform process model must improve Brier and log loss across multiple locked eras before it may feed a deployable Life forecast."
+  },
+  "candidateSearch": {
+    "nonUniformGridConfigurations": 53,
+    "gridFamilies": [
+      "Bayesian long-history",
+      "rolling recency",
+      "short/long regime blend",
+      "weekday-conditioned hierarchical"
+    ],
+    "additionalFamily": "Regularized pooled logistic using lag, recent rates, time-since-last, weekday and prize-category features",
+    "selectedResearchCandidate": "long_a200"
+  },
+  "prefixValidation": {
+    "metric": "100-class leading-prefix categorical forecast",
+    "uniform": {
+      "2024": {
+        "logloss": 4.60517018598808,
+        "brier": 0.99
+      },
+      "2025": {
+        "logloss": 4.60517018598808,
+        "brier": 0.99
+      },
+      "2026": {
+        "logloss": 4.605170185988082,
+        "brier": 0.9899999999999978
+      }
+    },
+    "long_a200": {
+      "2024": {
+        "logloss": 4.61582063432249,
+        "brier": 0.9902068481533502,
+        "deltaLogloss": 0.010650448334409646,
+        "deltaBrier": 0.0002068481533501476
+      },
+      "2025": {
+        "logloss": 4.611906276598083,
+        "brier": 0.990128551672329,
+        "deltaLogloss": 0.0067360906100031315,
+        "deltaBrier": 0.00012855167232894704
+      },
+      "2026": {
+        "logloss": 4.611493910842934,
+        "brier": 0.9901227405337123,
+        "deltaLogloss": 0.0063237248548517755,
+        "deltaBrier": 0.0001227405337145271
+      }
+    },
+    "conclusion": "The best research candidate selected on 2024 is still worse than uniform in 2024, 2025 and 2026. Upstream pre-draw 4D signal is not validated."
+  },
+  "lifeBridge2026": {
+    "model": "long_a200 prefix forecast → frozen V2 structural coefficients",
+    "draws": 125,
+    "meanTop8Hits": 1.84,
+    "hitRate": 0.23,
+    "fairMeanHits": 1.7777777777777777,
+    "oneSidedP": 0.26703559356536266,
+    "brier": 0.17282810380812164,
+    "uniformBrier": 0.1728395061728395,
+    "logloss": 0.5296733552672912,
+    "uniformLogloss": 0.5297061990576545,
+    "conclusion": "Tiny downstream proper-score improvement and 1.84 mean hits are exploratory only. The upstream model fails, and the Top-8 lift is not significant."
+  },
+  "currentResearchRanking": [
+    {
+      "number": 15,
+      "score": 0.22542030088879883
+    },
+    {
+      "number": 29,
+      "score": 0.225417156723707
+    },
+    {
+      "number": 30,
+      "score": 0.22529468662499372
+    },
+    {
+      "number": 35,
+      "score": 0.22521445394848139
+    },
+    {
+      "number": 5,
+      "score": 0.22484522197656656
+    },
+    {
+      "number": 28,
+      "score": 0.22462616914778988
+    },
+    {
+      "number": 26,
+      "score": 0.2244382426834198
+    },
+    {
+      "number": 4,
+      "score": 0.22366269641066142
+    },
+    {
+      "number": 3,
+      "score": 0.22279255211064272
+    },
+    {
+      "number": 19,
+      "score": 0.222759673364671
+    },
+    {
+      "number": 10,
+      "score": 0.2227214494395312
+    },
+    {
+      "number": 8,
+      "score": 0.22270893015380275
+    }
+  ],
+  "deployment": {
+    "status": "UNIFORM_BASELINE_ONLY",
+    "probabilityEachLifeNumber": 0.2222222222222222,
+    "rankedSetsIssued": false,
+    "reason": "No pre-draw 4D-process candidate survives the validation gate."
+  }
+}
