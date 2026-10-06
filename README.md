@@ -1,29 +1,48 @@
 # Magnum Life Forecast Lab
 
-Static, responsive GitHub Pages dashboard for the Magnum Life V1, V2 and V3 research models.
+Static, responsive GitHub Pages dashboard for the Magnum Life V1–V4 research models.
 
-## V3
-V3 is an adaptive pre-draw ensemble of rolling Life-frequency experts using 10, 20, 30, 50, 60, 100 and all-to-date windows, plus a uniform 8/36 expert. Expert weights adapt using cumulative Brier loss. A recent-calibration guardrail reduces confidence when the raw ensemble is scoring worse than the fair baseline.
+## V4: validation-driven process model
 
-**Current V3 status (data through 2026-10-04): `NO_VERIFIED_EDGE`.** The comparable 2026 holdout averages 1.769 correct numbers per Top-8 set versus the fair expectation of 1.778.
+V4 follows the independent validation recommendation from the Lottery Research project. It is **not** “V3 plus more ML.” It tests whether information available before the next draw can improve prediction of the underlying Magnum 4D process, and only permits that signal to enter the Life forecast if it survives locked proper-score validation.
+
+### Current V4 result
+**UNIFORM_BASELINE_ONLY**
+
+The best non-uniform 4D leading-prefix candidate is worse than the fair 00–99 benchmark on both log loss and Brier score in 2024, 2025 and 2026. A downstream research-only 4D→Life bridge averages 1.840 Top-8 hits across 125 Life draws in 2026, but its one-sided p-value is about 0.267 and the upstream model fails validation. It is therefore blocked from deployment.
+
+The deployed V4 marginal probability remains:
+
+`8 / 36 = 22.22%` for every Life number.
+
+No ranked V4 deployment set is issued.
+
+## Model history
+
+- **V1**: rolling Life-number frequency model. Historical lift did not persist.
+- **V2**: confirmed same-draw 4D→Life structural relationship. Strong diagnostic evidence, but not directly pre-draw.
+- **V3**: adaptive multi-horizon Life-history ensemble with a uniform expert and calibration guardrail. No verified edge.
+- **V4**: upstream 4D-process information discovery with locked 2024/2025/2026 validation and a hard fallback to uniform.
+
+## V4 research files
+
+- `research/model_v4.py` – reproducible process model and hard gate
+- `research/v4_metrics.json` – current locked validation metrics
+- `research/V4_VALIDATION.md` – full V4 rationale and result
+- `research/fetch_official_snapshot.py` – raw-source snapshot helper with SHA-256 manifest
+- `research/model_v3.py`, `research/v3_metrics.json` – prior V3 model
 
 ## Dashboard files
-- `index.html` – dashboard structure
-- `styles.css` – responsive desktop/mobile design
-- `data.js` – V1/V2/V3 metrics, forecasts, weights and recent examples
-- `app.js` – rendering, tabs, model toggles, consensus map, data/weight panels
 
-## Research files
-- `research/v3_metrics.json` – generated V3 metrics and current forecast
-- `research/model_v3.py` – reproducible V3 model
-- `research/README.md` – methodology and validation notes
-
-## Timing distinction
-- **V1**: pre-draw Life-history model.
-- **V2 structural**: uses same-draw 4D results and is therefore a structural diagnostic, not a directly deployable future forecast.
-- **V3**: pre-draw adaptive Life-history ensemble. It is more conservative but still has no verified predictive edge.
+- `index.html`
+- `styles.css`
+- `data.js`
+- `app.js`
 
 ## GitHub Pages
+
 Enable **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
 
-This project is statistical research only. No forecast is guaranteed.
+Data cutoff for the current model run: **4 October 2026**.
+
+This project is statistical research. A historical pattern or diagnostic lift is not a guarantee of future lottery results.
