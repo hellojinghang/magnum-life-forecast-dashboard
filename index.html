@@ -12,7 +12,7 @@
   <header class="topbar">
     <div class="brand">
       <div class="brand-mark">ML</div>
-      <div><strong>Magnum Life Forecast Lab</strong><span>V1 + V2 + V3 + V4 research dashboard</span></div>
+      <div><strong>Magnum Life Forecast Lab</strong><span>V1 + V2 + V3 + V4 + V5 research dashboard</span></div>
     </div>
     <div class="top-actions">
       <span class="cutoff" id="cutoffText"></span>
@@ -40,6 +40,9 @@
         <div class="status-card v4">
           <span>V4 deployment gate</span><strong id="v4Status"></strong><small>Underlying 4D process gate</small>
         </div>
+        <div class="status-card v5">
+          <span>V5 deployment gate</span><strong id="v5Status"></strong><small>Exogenous process + prospective registry</small>
+        </div>
       </div>
     </section>
 
@@ -50,6 +53,7 @@
       <button class="tab" data-tab="history">Recent Backtests</button>
       <button class="tab" data-tab="data">Data & Weights</button>
       <button class="tab" data-tab="v4process">V4 Process</button>
+      <button class="tab" data-tab="v5process">V5 Exogenous</button>
       <button class="tab" data-tab="method">Methodology</button>
     </nav>
 
@@ -71,13 +75,14 @@
 
     <section id="forecast" class="tab-panel">
       <div class="forecast-warning">
-        <strong>Research output, not a guarantee.</strong> V4 follows the independent validation policy: no ranked forecast is deployed unless a pre-draw 4D-process model beats the fair baseline on locked proper scores across multiple eras. That gate currently fails, so V4 defaults to uniform 8/36 probabilities.
+        <strong>Research output, not a guarantee.</strong> V5 extends the validation policy to public exogenous process variables and prospective freezing. Its research bridge is being watched, but deployment remains the uniform 8/36 baseline because the upstream 4D-process model still loses to uniform.
       </div>
       <div class="model-switch">
         <button class="model-btn" data-model="v1">V1 pre-draw</button>
         <button class="model-btn" data-model="v2">V2 experimental</button>
         <button class="model-btn" data-model="v3">V3 adaptive</button>
-        <button class="model-btn active" data-model="v4">V4 gated process</button>
+        <button class="model-btn" data-model="v4">V4 gated process</button>
+        <button class="model-btn active" data-model="v5">V5 prospective watch</button>
       </div>
       <div class="grid forecast-layout">
         <article class="panel">
@@ -110,7 +115,8 @@
         <button class="history-btn" data-model="v1">V1 recent predictions</button>
         <button class="history-btn" data-model="v2">V2 structural examples</button>
         <button class="history-btn" data-model="v3">V3 recent predictions</button>
-        <button class="history-btn active" data-model="v4">V4 blocked bridge</button>
+        <button class="history-btn" data-model="v4">V4 blocked bridge</button>
+        <button class="history-btn active" data-model="v5">V5 exogenous watch</button>
       </div>
       <article class="panel">
         <div class="section-head"><div><span class="eyebrow" id="historyEyebrow">PRE-DRAW</span><h2 id="historyTitle">Last five historical V3 predictions</h2></div><span class="pill" id="historyPill">Chronological</span></div>
@@ -153,17 +159,49 @@
       </article>
     </section>
 
+    <section id="v5process" class="tab-panel">
+      <div class="grid two-col">
+        <article class="panel">
+          <div class="section-head"><div><span class="eyebrow">PUBLIC EXOGENOUS METADATA</span><h2>What V5 can know before the draw</h2></div><span class="pill">Cutoff 7 Oct 2026</span></div>
+          <div id="v5Meta" class="data-grid"></div>
+          <p class="footnote">Tested states include Special-vs-regular draw, exact draw day, gap since previous draw, back-to-back state, recent draw density, month, quarter, and interactions. Public machine IDs, ball-set rotations and maintenance logs were not found.</p>
+        </article>
+        <article class="panel">
+          <div class="section-head"><div><span class="eyebrow">PROSPECTIVE VALIDATION</span><h2>Frozen registry starts now</h2></div><span class="pill">50 / 100 / 200 draws</span></div>
+          <div id="v5Registry" class="registry-card"></div>
+          <p class="footnote">The deployed forecast is frozen before the draw. Research-only rankings are stored separately so they cannot be rewritten after results are known.</p>
+        </article>
+      </div>
+      <article class="panel">
+        <div class="section-head"><div><span class="eyebrow">LOCKED EXOGENOUS VALIDATION</span><h2>Selected 4D process candidate vs uniform</h2><p class="muted">Selected on 2024, checked in 2025, final test in 2026. Lower proper scores are better.</p></div><span class="pill">month_a500_l0.25</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Year</th><th>Uniform log loss</th><th>Candidate log loss</th><th>Δ log loss</th><th>Uniform Brier</th><th>Candidate Brier</th><th>Δ Brier</th></tr></thead><tbody id="v5ProcessTable"></tbody></table></div>
+      </article>
+      <div class="grid two-col v5-lower">
+        <article class="panel">
+          <span class="eyebrow">PROSPECTIVE WATCH CANDIDATE</span>
+          <h2>Downstream 4D → Life bridge</h2>
+          <div id="v5BridgeSummary" class="bridge-summary"></div>
+          <p class="footnote">This is not the deployed forecast. The upstream process model is worse than uniform, and the apparent Life lift has not crossed the validator's significance threshold.</p>
+        </article>
+        <article class="panel">
+          <div class="section-head"><div><span class="eyebrow">BLOCKED CURRENT RANKING</span><h2>Research vector for the next draw</h2></div><span class="pill danger-pill">NOT DEPLOYED</span></div>
+          <div id="v5ResearchTop" class="score-list"></div>
+        </article>
+      </div>
+    </section>
+
     <section id="method" class="tab-panel">
-      <div class="grid four-col">
+      <div class="grid five-col">
         <article class="panel"><span class="eyebrow">MODEL V1</span><h2>Rolling Life-frequency model</h2><ul id="v1Method"></ul><div class="formula">P<sub>V1</sub>(n) = shrink × recent frequency + baseline</div></article>
         <article class="panel"><span class="eyebrow">MODEL V2</span><h2>4D → Life structural model</h2><ul id="v2Method"></ul><div class="formula">logit P(n) = β₀ + β₁I<sub>Top3</sub> + β₂I<sub>Special</sub> + β₃I<sub>Consol</sub></div></article>
         <article class="panel"><span class="eyebrow">MODEL V3</span><h2>Adaptive multi-horizon ensemble</h2><ul id="v3Method"></ul><div class="formula">P<sub>V3</sub>(n) = guard × Σ w<sub>h</sub>P<sub>h</sub>(n) + baseline</div></article>
         <article class="panel"><span class="eyebrow">MODEL V4</span><h2>Process-informed gated bridge</h2><ul id="v4Method"></ul><div class="formula">4D process → locked validation → V2 structural bridge → hard deployment gate</div></article>
+        <article class="panel"><span class="eyebrow">MODEL V5</span><h2>Exogenous process + prospective registry</h2><ul id="v5Method"></ul><div class="formula">Z<sub>t</sub> → 4D prefix model → locked gate → Life bridge → prospective freeze</div></article>
       </div>
       <article class="panel methodology-note">
         <span class="eyebrow">WHY THE DASHBOARD SHOWS TWO TYPES OF ACCURACY</span>
         <h2>Timing matters more than a flashy score.</h2>
-        <p>V4 implements the validation report's stricter rule: pre-draw information must first improve the underlying 4D process forecast on locked proper scores. Only then may it feed the established V2 4D→Life relationship. Because that upstream test currently fails, V4 deliberately deploys the uniform Life baseline rather than a ranked set.</p>
+        <p>V5 keeps V4's upstream gate and adds the validator's next requirement: legitimate exogenous process variables plus immutable prospective predictions. Because public calendar/process states still fail the 4D proper-score test, deployment remains uniform while the blocked candidate is tracked prospectively.</p>
       </article>
     </section>
   </main>
