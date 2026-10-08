@@ -1,46 +1,50 @@
 # Magnum Life Forecast Lab
 
-Static, responsive GitHub Pages dashboard for the Magnum Life **V1–V5** research models.
+Static, responsive GitHub Pages dashboard for the Magnum Life **V1–V6** research models.
 
-## V5: exogenous process + prospective validation
+## Current project objective
 
-V5 follows the independent validation recommendation: stop adding complexity to historical Life-number patterns and instead test legitimate information available **before** the draw.
+The project no longer treats "better than random ranking" as sufficient. A model can only be promoted when it passes **both**:
 
-V5 examines public process/calendar states such as:
-- Special vs regular draw
-- weekday
-- gap since the previous draw
-- back-to-back draw state
-- 7-day draw density
-- month / quarter
-- process-state interactions
+1. **Statistical gate** — pre-draw probabilities outperform the fair baseline on locked/prospective Brier score, log loss, ranking performance and adjusted significance.
+2. **Economic gate** — the conservative expected payout remains above **RM1 per RM1 stake**, including time value, model uncertainty, and reasonable payout-sharing/cap haircuts.
 
-The current dataset contains **1,051 4D draws through 7 October 2026**.
+## V6 result
 
-### V5 result
+Using the current blocked V5 research probability vector, V6 estimates:
 
-The best exogenous 4D-prefix candidate selected on 2024 is worse than uniform in **2024, 2025 and 2026** on both log loss and Brier score.
+- Fair nominal EV: **RM0.550 / RM1**
+- Current model nominal EV: **RM0.598 / RM1**
+- Current model PV-adjusted EV: **RM0.508 / RM1**
+- Nominal expected return: **−40.2%**
+- PV-adjusted expected return: **−49.2%**
 
-A downstream research-only 4D→Life bridge reaches **1.913 Top-8 hits** across 126 draws in 2026 versus the fair **1.778**, but its one-sided p-value is about **0.082**, the upstream model fails, and the probability-score improvement is tiny.
+So the current deployment status is:
 
-Therefore:
+**`NO_BET_POSITIVE_EV_NOT_ESTABLISHED`**
 
-**Deployment = `UNIFORM_BASELINE_ONLY`**
+V6 estimates that the current signal would need to be roughly **7.22× stronger** for nominal break-even and **9.64× stronger** for the PV-adjusted break-even screen.
 
-Every Life number remains at **22.22%** and V5 issues **no ranked deployment set**.
+## V5 prospective watch
 
-The blocked candidate is now frozen prospectively rather than discarded. The first immutable registry entry targets the **10 October 2026** draw, with review milestones after 50, 100 and 200 future draws.
+The blocked V5 exogenous candidate remains in an append-only prospective registry. Its first frozen record targets the **10 October 2026** draw and was committed before the result.
+
+The research candidate is not a deployed betting recommendation.
 
 ## Model history
 
-- **V1** — rolling Life-number frequency model; lift did not persist.
+- **V1** — rolling Life frequency model; lift did not persist.
 - **V2** — confirmed same-draw 4D→Life structural relationship; not directly pre-draw.
-- **V3** — adaptive multi-horizon Life ensemble; no verified edge.
-- **V4** — upstream 4D-process frequency/serial model with hard baseline gate; failed.
-- **V5** — public exogenous process states + prospective frozen registry; watch candidate only.
+- **V3** — adaptive multi-horizon Life model; no verified edge.
+- **V4** — upstream 4D history/serial model; locked validation failed.
+- **V5** — public exogenous process states + prospective registry; watch-only.
+- **V6** — economic expected-return gate; current model remains negative-EV.
 
 ## Research files
 
+- `research/model_v6.py`
+- `research/v6_metrics.json`
+- `research/V6_ECONOMICS.md`
 - `research/model_v5.py`
 - `research/v5_metrics.json`
 - `research/V5_VALIDATION.md`
@@ -53,6 +57,6 @@ The blocked candidate is now frozen prospectively rather than discarded. The fir
 
 Enable **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
 
-Latest V5 research cutoff: **7 October 2026**.
+Latest research cutoff: **7 October 2026**.
 
-This repository is statistical research. A historical or research-only ranking is not a guarantee of future lottery results.
+This repository is statistical research. No historical or research-only ranking is a guarantee of future lottery results.
