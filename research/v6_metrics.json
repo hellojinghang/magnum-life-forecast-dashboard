@@ -1,0 +1,84 @@
+{
+  "version": "V6",
+  "cutoff": "2026-10-07",
+  "objective": "Economic viability gate. A predictive signal is not considered usable unless its conservative expected payout exceeds the RM1 stake after prize mechanics, time value, model uncertainty, and payout-sharing/cap considerations.",
+  "officialPrizeModel": {
+    "stake": 1,
+    "grandNominal": 7300000,
+    "secondNominal": 100000,
+    "third": 6000,
+    "fourthPerBonus": 600,
+    "fifth": 100,
+    "sixthPerBonus": 30,
+    "seventh": 10,
+    "eighthPerBonus": 5,
+    "doubleBonusMultiplesLowerPrize": true,
+    "grandPV45": 4853648,
+    "secondPV45": 99393
+  },
+  "currentResearchTicket": [
+    35,
+    30,
+    26,
+    5,
+    28,
+    15,
+    29,
+    12
+  ],
+  "currentResearchMarginals": {
+    "12": 0.2238055164236165,
+    "15": 0.22411842879306454,
+    "26": 0.22455200351224347,
+    "28": 0.2241494277180459,
+    "29": 0.22387065767983177,
+    "30": 0.22502707763384452,
+    "35": 0.2269243251485871,
+    "05": 0.22438390588540197
+  },
+  "distributionModel": {
+    "type": "fixed-size conditional Bernoulli / maximum-entropy 8-of-36 set model",
+    "note": "Weights are fitted so the full 36-number marginal inclusion vector matches the blocked V5 research vector while every simulated/exact state contains exactly 8 main numbers. Bonus numbers are conditionally uniform among the 28 non-main numbers because no bonus-number edge is validated."
+  },
+  "currentEconomics": {
+    "expectedTop8Hits": 1.7968313428218081,
+    "exact8Probability": 3.67642737e-8,
+    "exact8Odds": 27200319.745434016,
+    "fairExact8Odds": 30260340,
+    "nominalEV": 0.5981715690243423,
+    "nominalExpectedReturn": -0.4018284309756577,
+    "pv45EV": 0.5078822290551689,
+    "pv45ExpectedReturn": -0.4921177709448311,
+    "fairNominalEV": 0.5501610358641047,
+    "fairPV45EV": 0.468996581003386
+  },
+  "breakEven": {
+    "nominal": {
+      "signalMultiplier": 7.223696575486645,
+      "impliedExpectedTop8Hits": 1.91541495016312,
+      "meanSelectedMarginal": 0.2394268687676081,
+      "exact8Odds": 14349020.419993
+    },
+    "pv45": {
+      "signalMultiplier": 9.6427944807288,
+      "impliedExpectedTop8Hits": 1.9615073893736934,
+      "meanSelectedMarginal": 0.24518842367006746,
+      "exact8Odds": 11306534.71545661
+    }
+  },
+  "promotionGate": {
+    "status": "FAIL",
+    "rules": [
+      "pre-draw upstream probabilities beat uniform on locked Brier and log loss",
+      "prospective frozen predictions replicate across at least 50 draws; 100–200 preferred",
+      "multiplicity-adjusted statistical evidence survives",
+      "nominal EV exceeds RM1 per RM1 stake",
+      "PV-adjusted EV exceeds RM1",
+      "a conservative lower confidence bound on EV remains above RM1 after model uncertainty and sharing/cap haircuts"
+    ]
+  },
+  "deployment": {
+    "status": "NO_BET_POSITIVE_EV_NOT_ESTABLISHED",
+    "reason": "Current nominal EV is about RM0.598 and PV-adjusted EV about RM0.508 per RM1. These are below break-even even before adding conservative sharing/cap/model-risk haircuts."
+  }
+}
