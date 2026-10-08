@@ -11,6 +11,7 @@ $('#v2Status').textContent = D.status.v2.code.replaceAll('_',' ');
 $('#v3Status').textContent = D.status.v3.code.replaceAll('_',' ');
 $('#v4Status').textContent = D.status.v4.code.replaceAll('_',' ');
 $('#v5Status').textContent = D.status.v5.code.replaceAll('_',' ');
+$('#v6Status').textContent = D.status.v6.code.replaceAll('_',' ');
 
 const v1_2019=D.accuracy.find(x=>x.model==='V1'&&x.period.startsWith('2019'));
 const v1_2026=D.accuracy.find(x=>x.model==='V1'&&x.period.startsWith('2026'));
@@ -20,11 +21,12 @@ const v3_2019=D.accuracy.find(x=>x.model==='V3'&&x.period.startsWith('2019'));
 const v3_2026=D.accuracy.find(x=>x.model==='V3'&&x.period.startsWith('2026'));
 const v4_2026=D.accuracy.find(x=>x.model==='V4'&&x.period.startsWith('2026'));
 const v5_2026=D.accuracy.find(x=>x.model==='V5'&&x.period.startsWith('2026'));
+const v6_now=D.accuracy.find(x=>x.model==='V6');
 const metrics=[
-  ['Fair Top-8 baseline',fmt(D.meta.baselineHits),'expected hits / draw',''],
-  ['V3 · 2026 holdout',fmt(v3_2026.meanHits),`${pct(v3_2026.rate)} · adaptive pre-draw`,v3_2026.meanHits>D.meta.baselineHits?'good':'bad'],
-  ['V4 · 2026 blocked bridge',fmt(v4_2026.meanHits),`${pct(v4_2026.rate)} · research only`,'warn'],
-  ['V5 · 2026 watch bridge',fmt(v5_2026.meanHits),`${pct(v5_2026.rate)} · blocked, p=${v5_2026.p.toFixed(3)}`,'warn']
+  ['Fair nominal EV','RM '+D.v6.currentEconomics.fairNominalEV.toFixed(3),'per RM1 stake',''],
+  ['V5 · 2026 watch bridge',fmt(v5_2026.meanHits),`${pct(v5_2026.rate)} · blocked, p=${v5_2026.p.toFixed(3)}`,'warn'],
+  ['V6 nominal EV','RM '+D.v6.currentEconomics.modelNominalEV.toFixed(3),`${D.v6.currentEconomics.nominalReturnPct.toFixed(1)}% expected return`,'bad'],
+  ['V6 PV-adjusted EV','RM '+D.v6.currentEconomics.modelPV45EV.toFixed(3),`${D.v6.currentEconomics.pv45ReturnPct.toFixed(1)}% expected return`,'bad']
 ];
 $('#metricGrid').innerHTML=metrics.map(m=>`<div class="metric-card"><div class="label">${m[0]}</div><div class="value ${m[3]}">${m[1]}</div><div class="sub">${m[2]}</div></div>`).join('');
 
@@ -44,25 +46,25 @@ consensus('v3'); $('#consensusSelect').addEventListener('change',e=>consensus(e.
 
 function renderForecast(model){
   const f=D.forecasts[model];
-  $('#forecastEyebrow').textContent=model==='v1'?'V1 PRE-DRAW':model==='v2'?'V2 EXPERIMENTAL':model==='v3'?'V3 ADAPTIVE PRE-DRAW':model==='v4'?'V4 GATED PROCESS MODEL':'V5 EXOGENOUS PROCESS MODEL';
+  $('#forecastEyebrow').textContent=model==='v1'?'V1 PRE-DRAW':model==='v2'?'V2 EXPERIMENTAL':model==='v3'?'V3 ADAPTIVE PRE-DRAW':model==='v4'?'V4 GATED PROCESS MODEL':model==='v5'?'V5 EXOGENOUS PROCESS MODEL':'V6 ECONOMIC GATE';
   $('#forecastTitle').textContent=f.label;
   $('#forecastDescription').textContent=f.description;
-  $('#forecastGate').textContent=model==='v2'?'EXPERIMENTAL · GATE FAILED':model==='v3'?'BASELINE GUARDED · NO VERIFIED EDGE':model==='v4'?'UNIFORM BASELINE ONLY':model==='v5'?'PROSPECTIVE WATCH · UNIFORM DEPLOYMENT':'NO VERIFIED EDGE';
+  $('#forecastGate').textContent=model==='v2'?'EXPERIMENTAL · GATE FAILED':model==='v3'?'BASELINE GUARDED · NO VERIFIED EDGE':model==='v4'?'UNIFORM BASELINE ONLY':model==='v5'?'PROSPECTIVE WATCH · UNIFORM DEPLOYMENT':model==='v6'?'NEGATIVE EV · NO BET':'NO VERIFIED EDGE';
   if(f.sets && f.sets.length){
     $('#forecastSets').innerHTML=f.sets.map(s=>`<div class="set-card"><div class="set-index">Set ${s.id}</div><div><div class="balls">${s.numbers.map(n=>ball(n)).join('')}</div><div class="set-score">Mean model score · ${pct(s.score)}</div></div><button class="copy-btn" data-copy="${s.numbers.map(n=>String(n).padStart(2,'0')).join(' ')}">Copy</button></div>`).join('');
   }else{
-    $('#forecastSets').innerHTML=`<div class="no-forecast"><strong>No ranked deployment set issued.</strong><p>${model==='v5'?'V5 failed the public exogenous-process validation gate and has entered prospective watch mode.':'V4 failed the upstream 4D-process validation gate.'} The deployed probability for every number remains <b>22.22%</b>.</p></div>`;
+    $('#forecastSets').innerHTML=`<div class="no-forecast"><strong>No ranked deployment set issued.</strong><p>${model==='v6'?'V6 blocks any betting output because the best current research ticket has expected payout below RM1 per RM1 stake.':model==='v5'?'V5 failed the public exogenous-process validation gate and has entered prospective watch mode.':'V4 failed the upstream 4D-process validation gate.'} ${model==='v6'?'':'The deployed probability for every number remains <b>22.22%</b>.'}</p></div>`;
   }
   if(f.top12 && f.top12.length){
     const vals=f.top12.map(x=>x.score); const min=Math.min(...vals), max=Math.max(...vals);
     $('#topScores').innerHTML=f.top12.map(x=>{const w=18+82*((x.score-min)/(max-min||1)); return `<div class="score-item"><span class="score-num">${String(x.number).padStart(2,'0')}</span><div class="mini-track"><div class="mini-fill" style="width:${w}%"></div></div><span class="score-pct">${pct(x.score)}</span></div>`}).join('');
   }else{
-    $('#topScores').innerHTML=`<div class="uniform-card"><div class="uniform-value">22.22%</div><strong>All 36 numbers</strong><p>${model==='v5'?'V5 deployment remains uniform while its blocked candidate is tracked prospectively.':'V4 deployment intentionally collapses to the fair 8/36 baseline.'}</p></div>`;
+    $('#topScores').innerHTML=model==='v6'?`<div class="uniform-card"><div class="uniform-value">RM ${D.v6.currentEconomics.modelNominalEV.toFixed(3)}</div><strong>Expected payout per RM1</strong><p>PV-adjusted EV: RM ${D.v6.currentEconomics.modelPV45EV.toFixed(3)}. Positive return requires both to exceed RM1 under conservative confidence bounds.</p></div>`:`<div class="uniform-card"><div class="uniform-value">22.22%</div><strong>All 36 numbers</strong><p>${model==='v5'?'V5 deployment remains uniform while its blocked candidate is tracked prospectively.':'V4 deployment intentionally collapses to the fair 8/36 baseline.'}</p></div>`;
   }
-  $('#scoreNote').textContent=model==='v1'?'Scores are calibrated marginal probabilities from the V1 rolling-frequency model.':model==='v2'?'V2 scores are experimental expected structural probabilities produced by forecasting 4D leading-prefix presence from the most recent 50 4D draws; this bridge has not shown a stable holdout edge.':model==='v3'?`V3 scores blend seven rolling horizons plus a uniform expert. Current confidence guard: ${Math.round(f.guard*100)}%. Recent raw 30-draw Brier ${f.recentRawBrier30.toFixed(6)} vs uniform ${f.uniformBrier.toFixed(6)}.`:model==='v5'?'V5 does not expose the blocked ranking as a deployment forecast. Its research ranking is shown only in the V5 Exogenous tab and is frozen prospectively for evaluation.':'The validation policy forbids a ranked V4 deployment forecast because the upstream 4D-process model did not beat uniform on locked proper scores.';
+  $('#scoreNote').textContent=model==='v1'?'Scores are calibrated marginal probabilities from the V1 rolling-frequency model.':model==='v2'?'V2 scores are experimental expected structural probabilities produced by forecasting 4D leading-prefix presence from the most recent 50 4D draws; this bridge has not shown a stable holdout edge.':model==='v3'?`V3 scores blend seven rolling horizons plus a uniform expert. Current confidence guard: ${Math.round(f.guard*100)}%. Recent raw 30-draw Brier ${f.recentRawBrier30.toFixed(6)} vs uniform ${f.uniformBrier.toFixed(6)}.`:model==='v5'?'V5 does not expose the blocked ranking as a deployment forecast. Its research ranking is shown only in the V5 Exogenous tab and is frozen prospectively for evaluation.':model==='v6'?'V6 is an economic viability layer. It will not permit a bet unless expected payout remains above RM1 after time-value, sharing/cap assumptions and model uncertainty.':'The validation policy forbids a ranked V4 deployment forecast because the upstream 4D-process model did not beat uniform on locked proper scores.';
   $$('.copy-btn').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);const old=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=old,900)}catch{}});
 }
-renderForecast('v5');
+renderForecast('v6');
 $$('.model-btn').forEach(btn=>btn.addEventListener('click',()=>{$$('.model-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');renderForecast(btn.dataset.model)}));
 
 $('#accuracyTable').innerHTML=D.accuracy.map(a=>{const delta=a.meanHits-D.meta.baselineHits;return `<tr><td><strong>${a.model}</strong></td><td>${a.period}</td><td>${a.type}</td><td>${a.draws}</td><td><strong>${a.meanHits.toFixed(3)}</strong></td><td>${pct(a.rate)}</td><td class="delta ${delta>=0?'up':'down'}">${delta>=0?'+':''}${delta.toFixed(3)}</td><td>${a.brier.toFixed(5)}</td><td>${a.logloss.toFixed(5)}</td></tr>`}).join('');
@@ -81,6 +83,7 @@ $('#v2Method').innerHTML=D.methods.v2.map(x=>`<li>${x}</li>`).join('');
 $('#v3Method').innerHTML=D.methods.v3.map(x=>`<li>${x}</li>`).join('');
 $('#v4Method').innerHTML=D.methods.v4.map(x=>`<li>${x}</li>`).join('');
 $('#v5Method').innerHTML=D.methods.v5.map(x=>`<li>${x}</li>`).join('');
+$('#v6Method').innerHTML=D.methods.v6.map(x=>`<li>${x}</li>`).join('');
 
 $('#dataCutoffPill').textContent=`Cutoff ${D.dataUsed.cutoff}`;
 const dataItems=[
@@ -115,6 +118,16 @@ $('#v5Meta').innerHTML=`
   <div class="data-card"><strong>${D.v5.data.specialDraws}</strong><span>Special draws</span><small>Tuesday-type observations</small></div>
   <div class="data-card"><strong>0</strong><span>physical equipment fields</span><small>No public machine/ball-set/maintenance series found</small></div>`;
 $('#v5Registry').innerHTML=`<strong>Frozen next draw: ${D.v5.prospective.firstFrozenDraw}</strong><span>Deployment: 22.22% for all 36 numbers</span><small>Registry: ${D.v5.prospective.registry} · review after 50 / 100 / 200 future draws</small>`;
+$('#v6Economics').innerHTML=`
+  <div class="ev-card"><span>Fair nominal EV</span><strong>RM ${D.v6.currentEconomics.fairNominalEV.toFixed(3)}</strong><small>per RM1 ticket</small></div>
+  <div class="ev-card"><span>Current model nominal EV</span><strong class="bad">RM ${D.v6.currentEconomics.modelNominalEV.toFixed(3)}</strong><small>${D.v6.currentEconomics.nominalReturnPct.toFixed(1)}% expected return</small></div>
+  <div class="ev-card"><span>Current model PV EV</span><strong class="bad">RM ${D.v6.currentEconomics.modelPV45EV.toFixed(3)}</strong><small>${D.v6.currentEconomics.pv45ReturnPct.toFixed(1)}% expected return</small></div>
+  <div class="ev-card"><span>Current exact-8 odds</span><strong>1 in ${Math.round(D.v6.distributionModel.currentExact8Odds).toLocaleString()}</strong><small>fair: 1 in ${Math.round(D.v6.distributionModel.fairExact8Odds).toLocaleString()}</small></div>`;
+$('#v6BreakEven').innerHTML=`
+  <div class="threshold-row"><span>Nominal break-even</span><strong>${D.v6.breakEvenStress.nominal.signalMultiplier.toFixed(2)}× current signal</strong><small>Expected Top-8 hits ≈ ${D.v6.breakEvenStress.nominal.impliedExpectedHits.toFixed(3)}</small></div>
+  <div class="threshold-row"><span>PV-adjusted break-even</span><strong>${D.v6.breakEvenStress.pv45.signalMultiplier.toFixed(2)}× current signal</strong><small>Expected Top-8 hits ≈ ${D.v6.breakEvenStress.pv45.impliedExpectedHits.toFixed(3)}</small></div>`;
+$('#v6Gate').innerHTML=D.v6.confidenceGate.required.map(x=>`<li>${x}</li>`).join('');
+
 
 
 
