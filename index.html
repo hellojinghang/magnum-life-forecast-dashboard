@@ -12,7 +12,7 @@
   <header class="topbar">
     <div class="brand">
       <div class="brand-mark">ML</div>
-      <div><strong>Magnum Life Forecast Lab</strong><span>V1 + V2 + V3 + V4 + V5 research dashboard</span></div>
+      <div><strong>Magnum Life Forecast Lab</strong><span>V1 + V2 + V3 + V4 + V5 + V6 research dashboard</span></div>
     </div>
     <div class="top-actions">
       <span class="cutoff" id="cutoffText"></span>
@@ -43,6 +43,9 @@
         <div class="status-card v5">
           <span>V5 deployment gate</span><strong id="v5Status"></strong><small>Exogenous process + prospective registry</small>
         </div>
+        <div class="status-card v6">
+          <span>V6 economic gate</span><strong id="v6Status"></strong><small>Positive expected return required</small>
+        </div>
       </div>
     </section>
 
@@ -54,6 +57,7 @@
       <button class="tab" data-tab="data">Data & Weights</button>
       <button class="tab" data-tab="v4process">V4 Process</button>
       <button class="tab" data-tab="v5process">V5 Exogenous</button>
+      <button class="tab" data-tab="v6economics">V6 Economics</button>
       <button class="tab" data-tab="method">Methodology</button>
     </nav>
 
@@ -75,14 +79,15 @@
 
     <section id="forecast" class="tab-panel">
       <div class="forecast-warning">
-        <strong>Research output, not a guarantee.</strong> V5 extends the validation policy to public exogenous process variables and prospective freezing. Its research bridge is being watched, but deployment remains the uniform 8/36 baseline because the upstream 4D-process model still loses to uniform.
+        <strong>Research output, not a guarantee.</strong> V6 adds the final economic gate: even a statistically interesting model is not deployable unless its conservative expected payout exceeds RM1 per RM1 stake. The current model remains negative-EV.
       </div>
       <div class="model-switch">
         <button class="model-btn" data-model="v1">V1 pre-draw</button>
         <button class="model-btn" data-model="v2">V2 experimental</button>
         <button class="model-btn" data-model="v3">V3 adaptive</button>
         <button class="model-btn" data-model="v4">V4 gated process</button>
-        <button class="model-btn active" data-model="v5">V5 prospective watch</button>
+        <button class="model-btn" data-model="v5">V5 prospective watch</button>
+        <button class="model-btn active" data-model="v6">V6 economic gate</button>
       </div>
       <div class="grid forecast-layout">
         <article class="panel">
@@ -190,18 +195,40 @@
       </div>
     </section>
 
+    <section id="v6economics" class="tab-panel">
+      <div class="grid two-col">
+        <article class="panel">
+          <div class="section-head"><div><span class="eyebrow">EXPECTED RETURN</span><h2>Economic viability of the current research vector</h2></div><span class="pill danger-pill">NO BET</span></div>
+          <div id="v6Economics" class="ev-grid"></div>
+          <p class="footnote">The model uses the official straight-play prize table. The PV screen discounts the annuity-style Grand and 2nd prizes at the research rate used previously. Prize-sharing and payout caps are not credited as upside, so the current negative-EV verdict is not dependent on optimistic assumptions.</p>
+        </article>
+        <article class="panel">
+          <div class="section-head"><div><span class="eyebrow">BREAK-EVEN STRESS TEST</span><h2>How much stronger must the signal become?</h2></div><span class="pill">RM1 EV threshold</span></div>
+          <div id="v6BreakEven" class="threshold-list"></div>
+          <p class="footnote">The stress test scales the current probability deviations from 8/36 while preserving their ranking pattern, then solves for expected payout = RM1.</p>
+        </article>
+      </div>
+      <article class="panel v6-gate-panel">
+        <span class="eyebrow">PROMOTION STANDARD</span>
+        <h2>V6 confidence gate</h2>
+        <ul id="v6Gate"></ul>
+        <p class="footnote">The model stays research-only until every condition is met. A lucky streak, a higher average hit count, or one profitable draw is not sufficient.</p>
+      </article>
+    </section>
+
     <section id="method" class="tab-panel">
-      <div class="grid five-col">
+      <div class="grid six-col">
         <article class="panel"><span class="eyebrow">MODEL V1</span><h2>Rolling Life-frequency model</h2><ul id="v1Method"></ul><div class="formula">P<sub>V1</sub>(n) = shrink × recent frequency + baseline</div></article>
         <article class="panel"><span class="eyebrow">MODEL V2</span><h2>4D → Life structural model</h2><ul id="v2Method"></ul><div class="formula">logit P(n) = β₀ + β₁I<sub>Top3</sub> + β₂I<sub>Special</sub> + β₃I<sub>Consol</sub></div></article>
         <article class="panel"><span class="eyebrow">MODEL V3</span><h2>Adaptive multi-horizon ensemble</h2><ul id="v3Method"></ul><div class="formula">P<sub>V3</sub>(n) = guard × Σ w<sub>h</sub>P<sub>h</sub>(n) + baseline</div></article>
         <article class="panel"><span class="eyebrow">MODEL V4</span><h2>Process-informed gated bridge</h2><ul id="v4Method"></ul><div class="formula">4D process → locked validation → V2 structural bridge → hard deployment gate</div></article>
         <article class="panel"><span class="eyebrow">MODEL V5</span><h2>Exogenous process + prospective registry</h2><ul id="v5Method"></ul><div class="formula">Z<sub>t</sub> → 4D prefix model → locked gate → Life bridge → prospective freeze</div></article>
+        <article class="panel"><span class="eyebrow">MODEL V6</span><h2>Economic expected-return gate</h2><ul id="v6Method"></ul><div class="formula">validated probabilities → prize distribution → EV / RM1 → confidence lower bound → deploy or block</div></article>
       </div>
       <article class="panel methodology-note">
         <span class="eyebrow">WHY THE DASHBOARD SHOWS TWO TYPES OF ACCURACY</span>
         <h2>Timing matters more than a flashy score.</h2>
-        <p>V5 keeps V4's upstream gate and adds the validator's next requirement: legitimate exogenous process variables plus immutable prospective predictions. Because public calendar/process states still fail the 4D proper-score test, deployment remains uniform while the blocked candidate is tracked prospectively.</p>
+        <p>V6 adds an economic requirement on top of all prior statistical gates. A model is not considered usable merely because it ranks winners better: its conservative expected payout must exceed the RM1 stake after time value, prize-sharing/cap assumptions and model uncertainty.</p>
       </article>
     </section>
   </main>
