@@ -1,11 +1,11 @@
 window.MODEL_DATA = {
   "meta": {
     "title": "Magnum Life Forecast Lab",
-    "dataCutoff": "2026-10-04",
-    "generated": "2026-10-06",
+    "dataCutoff": "2026-10-07",
+    "generated": "2026-10-08",
     "baselineHits": 1.7777777777777777,
     "baselineRate": 0.2222222222222222,
-    "modelVersion": "V4"
+    "modelVersion": "V5"
   },
   "status": {
     "v1": {
@@ -27,6 +27,11 @@ window.MODEL_DATA = {
       "code": "UNIFORM_BASELINE_ONLY",
       "label": "No pre-draw 4D-process candidate passed validation",
       "tone": "danger"
+    },
+    "v5": {
+      "code": "PROSPECTIVE_WATCH_ONLY",
+      "label": "Exogenous candidate blocked; prospective registry started",
+      "tone": "warning"
     }
   },
   "accuracy": [
@@ -106,6 +111,17 @@ window.MODEL_DATA = {
       "p": 0.26703559356536266,
       "brier": 0.17282810380812164,
       "logloss": 0.5296733552672912
+    },
+    {
+      "model": "V5",
+      "period": "2026 blocked exogenous bridge",
+      "type": "Pre-draw exogenous research bridge · not deployed",
+      "draws": 126,
+      "meanHits": 1.9126984126984128,
+      "rate": 0.2390873015873016,
+      "p": 0.08172338262648512,
+      "brier": 0.1728324043552914,
+      "logloss": 0.5296858663093739
     }
   ],
   "forecasts": {
@@ -519,6 +535,18 @@ window.MODEL_DATA = {
       "deployment": "UNIFORM_BASELINE_ONLY",
       "researchCandidate": "long_a200",
       "researchNote": "The blocked long-history Bayesian prefix bridge is retained only for diagnostics; it is not a deployable forecast."
+    },
+    "v5": {
+      "label": "V5 prospective deployment output",
+      "description": "V5 tests only publicly observable pre-draw process variables. The selected exogenous candidate fails the upstream 4D validation gate, so deployment remains the fair 8/36 baseline and no ranked betting set is issued.",
+      "sets": [],
+      "top12": [],
+      "uniformProbability": 0.2222222222222222,
+      "deployment": "UNIFORM_BASELINE_ONLY",
+      "prospectiveRegistryStarted": true,
+      "nextRegisteredDraw": "2026-10-10",
+      "researchCandidate": "month_a500_l0.25",
+      "researchNote": "Month-conditioned hierarchical 4D-prefix probabilities are retained only as a prospective watch candidate."
     }
   },
   "history": {
@@ -1019,6 +1047,133 @@ window.MODEL_DATA = {
         "hits": 3,
         "blocked": true
       }
+    ],
+    "v5": [
+      {
+        "date": "2026-09-27",
+        "selected": [
+          30,
+          35,
+          28,
+          4,
+          15,
+          26,
+          3,
+          29
+        ],
+        "actual": [
+          2,
+          10,
+          14,
+          15,
+          20,
+          21,
+          31,
+          33
+        ],
+        "hits": 1,
+        "blocked": true
+      },
+      {
+        "date": "2026-09-30",
+        "selected": [
+          30,
+          35,
+          28,
+          4,
+          15,
+          26,
+          5,
+          3
+        ],
+        "actual": [
+          10,
+          11,
+          20,
+          24,
+          32,
+          33,
+          34,
+          36
+        ],
+        "hits": 0,
+        "blocked": true
+      },
+      {
+        "date": "2026-10-03",
+        "selected": [
+          35,
+          30,
+          5,
+          26,
+          15,
+          12,
+          28,
+          4
+        ],
+        "actual": [
+          3,
+          7,
+          8,
+          10,
+          11,
+          12,
+          19,
+          21
+        ],
+        "hits": 1,
+        "blocked": true
+      },
+      {
+        "date": "2026-10-04",
+        "selected": [
+          35,
+          30,
+          5,
+          26,
+          15,
+          29,
+          12,
+          28
+        ],
+        "actual": [
+          1,
+          2,
+          15,
+          17,
+          21,
+          28,
+          30,
+          31
+        ],
+        "hits": 3,
+        "blocked": true
+      },
+      {
+        "date": "2026-10-07",
+        "selected": [
+          35,
+          30,
+          5,
+          26,
+          28,
+          15,
+          29,
+          12
+        ],
+        "actual": [
+          6,
+          12,
+          15,
+          19,
+          21,
+          23,
+          24,
+          35
+        ],
+        "hits": 3,
+        "blocked": true
+      }
     ]
   },
   "methods": {
@@ -1048,6 +1203,14 @@ window.MODEL_DATA = {
       "2024 is used for model selection, 2025 for confirmation, and 2026 as the locked final test. Uniform 00–99 prefix probabilities are always retained as the null model.",
       "The best non-uniform prefix candidate was worse than uniform in 2024, 2025 and 2026, so the deployment layer is forced back to uniform 8/36 Life probabilities.",
       "A research-only 4D→Life bridge is displayed separately; it cannot pass the gate merely because its 2026 Top-8 average happened to exceed 1.778."
+    ],
+    "v5": [
+      "Objective follows the independent validation report: add genuinely exogenous pre-draw process information rather than more historical Life-number complexity.",
+      "Publicly observable inputs tested include Special-vs-regular draw status, exact draw day, days since the previous draw, back-to-back draw state, recent 7-day draw density, month, quarter, and hierarchical interactions.",
+      "Magnum's published process fixes normal draws to Wednesday/Saturday/Sunday, Special Draws usually to Tuesday, all draws at 7pm in the same auditorium, with randomly selected public participants and electromechanical drums.",
+      "200 hierarchical exogenous configurations are evaluated. Hyperparameters are selected on 2024, checked on 2025, and finally tested on 2026.",
+      "No public machine ID, ball-set rotation, maintenance log, or equipment-change series was found, so V5 cannot test the strongest physical-process covariates recommended by the validator.",
+      "The selected month-conditioned candidate is worse than uniform upstream in every locked year. Its 2026 Life bridge reaches 1.913 hits but p≈0.082, so it is blocked and moved into prospective monitoring only."
     ]
   },
   "dataUsed": {
@@ -1325,6 +1488,219 @@ window.MODEL_DATA = {
     "deploymentGate": {
       "status": "UNIFORM_BASELINE_ONLY",
       "reason": "No non-uniform 4D-process candidate improves proper scores on multiple locked eras; the 2026 research bridge lift is not statistically significant.",
+      "deployedProbabilityPerNumber": 0.2222222222222222,
+      "rankedSetsIssued": false
+    }
+  },
+  "v5": {
+    "objective": "Test legitimate public exogenous/process information and start immutable prospective validation. Do not deploy a ranked forecast unless the upstream 4D process model itself beats uniform on locked proper scores.",
+    "cutoff": "2026-10-07",
+    "publicProcessMetadata": {
+      "regularDrawDays": [
+        "Wednesday",
+        "Saturday",
+        "Sunday"
+      ],
+      "specialDrawDay": "Tuesday (usually, subject to approval)",
+      "drawTime": "19:00 MYT",
+      "location": "Wisma Magnum draw auditorium, Kuala Lumpur",
+      "mechanism": "23 winning numbers from see-through electromechanical drums operated via remote control by randomly selected public participants",
+      "unavailablePublicFields": [
+        "machine/drum identifier by draw",
+        "ball-set identifier/rotation",
+        "maintenance or replacement log",
+        "equipment calibration log",
+        "operator/participant identity linked to output",
+        "documented machine-change dates"
+      ]
+    },
+    "data": {
+      "fourDDraws": 1051,
+      "fourDFrom": "2020-01-01",
+      "fourDTo": "2026-10-07",
+      "yearCounts": {
+        "2020": 126,
+        "2021": 126,
+        "2022": 179,
+        "2023": 165,
+        "2024": 164,
+        "2025": 165,
+        "2026": 126
+      },
+      "specialDraws": 75,
+      "regularDraws": 976,
+      "lifeBridgeDraws2026": 126
+    },
+    "candidateSearch": {
+      "configurations": 200,
+      "alphaGrid": [
+        20,
+        50,
+        100,
+        200,
+        500
+      ],
+      "stateBlendGrid": [
+        0.25,
+        0.5,
+        0.75,
+        1
+      ],
+      "stateFamilies": [
+        "special",
+        "weekday",
+        "gap",
+        "back-to-back",
+        "7-day density",
+        "month",
+        "quarter",
+        "weekday×gap",
+        "special×gap",
+        "special×month"
+      ],
+      "selectedOn2024": "month_a500_l0.25"
+    },
+    "prefixValidation": {
+      "uniform": {
+        "2024": {
+          "logloss": 4.60517018598808,
+          "brier": 0.9900000000000001
+        },
+        "2025": {
+          "logloss": 4.60517018598808,
+          "brier": 0.9900000000000001
+        },
+        "2026": {
+          "logloss": 4.605170185988082,
+          "brier": 0.9899999999999977
+        }
+      },
+      "selected": {
+        "2024": {
+          "logloss": 4.6138151695284995,
+          "brier": 0.9901724060921245,
+          "deltaLogloss": 0.008644983540419322,
+          "deltaBrier": 0.0001724060921243847
+        },
+        "2025": {
+          "logloss": 4.609626680266965,
+          "brier": 0.9900869476706682,
+          "deltaLogloss": 0.004456494278884726,
+          "deltaBrier": 0.00008694767066808007
+        },
+        "2026": {
+          "logloss": 4.611625017718023,
+          "brier": 0.9901245906913441,
+          "deltaLogloss": 0.00645483172994199,
+          "deltaBrier": 0.0001245906913463759
+        },
+        "name": "month_a500_l0.25"
+      },
+      "bestSpecialOnly": {
+        "2024": {
+          "logloss": 4.614080478076823,
+          "brier": 0.9901723317132404
+        },
+        "2025": {
+          "logloss": 4.612838337063369,
+          "brier": 0.9901498407217965
+        },
+        "2026": {
+          "logloss": 4.610462969259159,
+          "brier": 0.9901028744696092
+        },
+        "name": "special_a500_l0.5"
+      },
+      "conclusion": "Every tested public exogenous state remains worse than the uniform 00–99 prefix model on proper scoring."
+    },
+    "researchBridge": {
+      "status": "PROSPECTIVE_WATCH_ONLY",
+      "draws": 126,
+      "meanHits": 1.9126984126984128,
+      "hitRate": 0.2390873015873016,
+      "pOneSided": 0.08172338262648512,
+      "brier": 0.1728324043552914,
+      "logloss": 0.5296858663093739,
+      "uniform": {
+        "meanHits": 1.7777777777777777,
+        "brier": 0.1728395061728395,
+        "logloss": 0.5297061990576545
+      },
+      "currentTop12": [
+        {
+          "number": 35,
+          "score": 0.2269243251485871
+        },
+        {
+          "number": 30,
+          "score": 0.22502707763384452
+        },
+        {
+          "number": 26,
+          "score": 0.22455200351224347
+        },
+        {
+          "number": 5,
+          "score": 0.22438390588540197
+        },
+        {
+          "number": 28,
+          "score": 0.2241494277180459
+        },
+        {
+          "number": 15,
+          "score": 0.22411842879306454
+        },
+        {
+          "number": 29,
+          "score": 0.22387065767983177
+        },
+        {
+          "number": 12,
+          "score": 0.2238055164236165
+        },
+        {
+          "number": 18,
+          "score": 0.2236291700858527
+        },
+        {
+          "number": 4,
+          "score": 0.22355333748566236
+        },
+        {
+          "number": 8,
+          "score": 0.22339259671602665
+        },
+        {
+          "number": 22,
+          "score": 0.2230651837595689
+        }
+      ],
+      "blockedTop8": [
+        35,
+        30,
+        26,
+        5,
+        28,
+        15,
+        29,
+        12
+      ]
+    },
+    "prospective": {
+      "registry": "research/prospective/v5_registry.jsonl",
+      "firstFrozenDraw": "2026-10-10",
+      "reviewMilestones": [
+        50,
+        100,
+        200
+      ],
+      "deploymentProbabilityEach": 0.2222222222222222,
+      "rankedDeploymentSet": null
+    },
+    "deploymentGate": {
+      "status": "UNIFORM_BASELINE_ONLY",
+      "reason": "The selected public exogenous 4D process model is worse than uniform on 2024, 2025 and 2026 proper scores; the downstream Life lift is not significant after the required validation standard.",
       "deployedProbabilityPerNumber": 0.2222222222222222,
       "rankedSetsIssued": false
     }
