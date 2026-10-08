@@ -1,48 +1,58 @@
 # Magnum Life Forecast Lab
 
-Static, responsive GitHub Pages dashboard for the Magnum Life V1–V4 research models.
+Static, responsive GitHub Pages dashboard for the Magnum Life **V1–V5** research models.
 
-## V4: validation-driven process model
+## V5: exogenous process + prospective validation
 
-V4 follows the independent validation recommendation from the Lottery Research project. It is **not** “V3 plus more ML.” It tests whether information available before the next draw can improve prediction of the underlying Magnum 4D process, and only permits that signal to enter the Life forecast if it survives locked proper-score validation.
+V5 follows the independent validation recommendation: stop adding complexity to historical Life-number patterns and instead test legitimate information available **before** the draw.
 
-### Current V4 result
-**UNIFORM_BASELINE_ONLY**
+V5 examines public process/calendar states such as:
+- Special vs regular draw
+- weekday
+- gap since the previous draw
+- back-to-back draw state
+- 7-day draw density
+- month / quarter
+- process-state interactions
 
-The best non-uniform 4D leading-prefix candidate is worse than the fair 00–99 benchmark on both log loss and Brier score in 2024, 2025 and 2026. A downstream research-only 4D→Life bridge averages 1.840 Top-8 hits across 125 Life draws in 2026, but its one-sided p-value is about 0.267 and the upstream model fails validation. It is therefore blocked from deployment.
+The current dataset contains **1,051 4D draws through 7 October 2026**.
 
-The deployed V4 marginal probability remains:
+### V5 result
 
-`8 / 36 = 22.22%` for every Life number.
+The best exogenous 4D-prefix candidate selected on 2024 is worse than uniform in **2024, 2025 and 2026** on both log loss and Brier score.
 
-No ranked V4 deployment set is issued.
+A downstream research-only 4D→Life bridge reaches **1.913 Top-8 hits** across 126 draws in 2026 versus the fair **1.778**, but its one-sided p-value is about **0.082**, the upstream model fails, and the probability-score improvement is tiny.
+
+Therefore:
+
+**Deployment = `UNIFORM_BASELINE_ONLY`**
+
+Every Life number remains at **22.22%** and V5 issues **no ranked deployment set**.
+
+The blocked candidate is now frozen prospectively rather than discarded. The first immutable registry entry targets the **10 October 2026** draw, with review milestones after 50, 100 and 200 future draws.
 
 ## Model history
 
-- **V1**: rolling Life-number frequency model. Historical lift did not persist.
-- **V2**: confirmed same-draw 4D→Life structural relationship. Strong diagnostic evidence, but not directly pre-draw.
-- **V3**: adaptive multi-horizon Life-history ensemble with a uniform expert and calibration guardrail. No verified edge.
-- **V4**: upstream 4D-process information discovery with locked 2024/2025/2026 validation and a hard fallback to uniform.
+- **V1** — rolling Life-number frequency model; lift did not persist.
+- **V2** — confirmed same-draw 4D→Life structural relationship; not directly pre-draw.
+- **V3** — adaptive multi-horizon Life ensemble; no verified edge.
+- **V4** — upstream 4D-process frequency/serial model with hard baseline gate; failed.
+- **V5** — public exogenous process states + prospective frozen registry; watch candidate only.
 
-## V4 research files
+## Research files
 
-- `research/model_v4.py` – reproducible process model and hard gate
-- `research/v4_metrics.json` – current locked validation metrics
-- `research/V4_VALIDATION.md` – full V4 rationale and result
-- `research/fetch_official_snapshot.py` – raw-source snapshot helper with SHA-256 manifest
-- `research/model_v3.py`, `research/v3_metrics.json` – prior V3 model
-
-## Dashboard files
-
-- `index.html`
-- `styles.css`
-- `data.js`
-- `app.js`
+- `research/model_v5.py`
+- `research/v5_metrics.json`
+- `research/V5_VALIDATION.md`
+- `research/prospective/v5_registry.jsonl`
+- `research/prospective/README.md`
+- `research/fetch_official_snapshot.py`
+- prior V3/V4 models and metrics
 
 ## GitHub Pages
 
 Enable **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
 
-Data cutoff for the current model run: **4 October 2026**.
+Latest V5 research cutoff: **7 October 2026**.
 
-This project is statistical research. A historical pattern or diagnostic lift is not a guarantee of future lottery results.
+This repository is statistical research. A historical or research-only ranking is not a guarantee of future lottery results.
