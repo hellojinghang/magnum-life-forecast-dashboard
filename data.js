@@ -5,7 +5,7 @@ window.MODEL_DATA = {
     "generated": "2026-10-08",
     "baselineHits": 1.7777777777777777,
     "baselineRate": 0.2222222222222222,
-    "modelVersion": "V5"
+    "modelVersion": "V6"
   },
   "status": {
     "v1": {
@@ -32,6 +32,11 @@ window.MODEL_DATA = {
       "code": "PROSPECTIVE_WATCH_ONLY",
       "label": "Exogenous candidate blocked; prospective registry started",
       "tone": "warning"
+    },
+    "v6": {
+      "code": "NEGATIVE_EXPECTED_RETURN",
+      "label": "Economic gate failed",
+      "tone": "danger"
     }
   },
   "accuracy": [
@@ -116,6 +121,17 @@ window.MODEL_DATA = {
       "model": "V5",
       "period": "2026 blocked exogenous bridge",
       "type": "Pre-draw exogenous research bridge · not deployed",
+      "draws": 126,
+      "meanHits": 1.9126984126984128,
+      "rate": 0.2390873015873016,
+      "p": 0.08172338262648512,
+      "brier": 0.1728324043552914,
+      "logloss": 0.5296858663093739
+    },
+    {
+      "model": "V6",
+      "period": "Current economic screen",
+      "type": "Expected-value gate",
       "draws": 126,
       "meanHits": 1.9126984126984128,
       "rate": 0.2390873015873016,
@@ -547,6 +563,14 @@ window.MODEL_DATA = {
       "nextRegisteredDraw": "2026-10-10",
       "researchCandidate": "month_a500_l0.25",
       "researchNote": "Month-conditioned hierarchical 4D-prefix probabilities are retained only as a prospective watch candidate."
+    },
+    "v6": {
+      "label": "V6 economic deployment gate",
+      "description": "V6 converts the blocked V5 research probabilities into a coherent fixed-size 8-of-36 draw distribution and prices the actual Magnum Life prize table. The current best ticket remains negative-EV, so V6 issues no ranked deployment set.",
+      "sets": [],
+      "top12": [],
+      "deployment": "NO_BET_POSITIVE_EV_NOT_ESTABLISHED",
+      "uniformProbability": 0.2222222222222222
     }
   },
   "history": {
@@ -1211,6 +1235,14 @@ window.MODEL_DATA = {
       "200 hierarchical exogenous configurations are evaluated. Hyperparameters are selected on 2024, checked on 2025, and finally tested on 2026.",
       "No public machine ID, ball-set rotation, maintenance log, or equipment-change series was found, so V5 cannot test the strongest physical-process covariates recommended by the validator.",
       "The selected month-conditioned candidate is worse than uniform upstream in every locked year. Its 2026 Life bridge reaches 1.913 hits but p≈0.082, so it is blocked and moved into prospective monitoring only."
+    ],
+    "v6": [
+      "Uses the V5 pre-draw marginal probability vector only as a research input; no additional outcome-history tuning is added.",
+      "Builds a coherent fixed-size 8-of-36 conditional-Bernoulli set distribution whose marginal inclusion probabilities match the V5 vector.",
+      "Assumes no validated bonus-number edge, so the two bonus numbers are conditionally uniform among the 28 non-main numbers.",
+      "Prices the official straight-play prize table, including double payouts when both bonus numbers match the 4th/6th/8th categories.",
+      "Applies both nominal-value and present-value economic gates. Positive expected return is not declared unless a conservative lower bound exceeds RM1 per RM1 stake.",
+      "Current V5 research probabilities imply only RM0.598 nominal EV and about RM0.508 PV-adjusted EV for the top-ranked ticket, so V6 blocks deployment."
     ]
   },
   "dataUsed": {
@@ -1703,6 +1735,78 @@ window.MODEL_DATA = {
       "reason": "The selected public exogenous 4D process model is worse than uniform on 2024, 2025 and 2026 proper scores; the downstream Life lift is not significant after the required validation standard.",
       "deployedProbabilityPerNumber": 0.2222222222222222,
       "rankedSetsIssued": false
+    }
+  },
+  "v6": {
+    "objective": "Do not label the model usable until a conservative expected-return calculation exceeds RM1 per RM1 ticket and the predictive edge has already passed prospective statistical validation.",
+    "prizeModel": {
+      "stake": 1,
+      "grandNominal": 7300000,
+      "secondNominal": 100000,
+      "third": 6000,
+      "fourthPerBonus": 600,
+      "fifth": 100,
+      "sixthPerBonus": 30,
+      "seventh": 10,
+      "eighthPerBonus": 5,
+      "grandPV45": 4853648,
+      "secondPV45": 99393,
+      "sharingAndCaps": "Not credited in the base positive-EV claim; current EV is already below RM1 before additional sharing/cap haircuts."
+    },
+    "distributionModel": {
+      "type": "fixed-size conditional Bernoulli / maximum-entropy set model",
+      "ticket": [
+        35,
+        30,
+        26,
+        5,
+        28,
+        15,
+        29,
+        12
+      ],
+      "currentExpectedHits": 1.7968313428218081,
+      "currentExact8Probability": 3.67642737e-8,
+      "currentExact8Odds": 27200319.745434016,
+      "fairExact8Odds": 30260340,
+      "exact8Lift": 1.1124994221834341
+    },
+    "currentEconomics": {
+      "fairNominalEV": 0.5501610358641047,
+      "fairPV45EV": 0.468996581003386,
+      "modelNominalEV": 0.5981715690243423,
+      "modelPV45EV": 0.5078822290551689,
+      "nominalReturnPct": -40.18284309756577,
+      "pv45ReturnPct": -49.21177709448311,
+      "nominalLiftVsFair": 1.087263498503513,
+      "pvLiftVsFair": 1.0829124658329456
+    },
+    "breakEvenStress": {
+      "interpretation": "Scale the current deviation from 8/36 while preserving its ranking pattern, then solve for EV=RM1.",
+      "nominal": {
+        "signalMultiplier": 7.223696575486645,
+        "impliedExpectedHits": 1.91541495016312,
+        "meanTop8MarginalProbability": 0.2394268687676081,
+        "exact8Odds": 14349020.419993
+      },
+      "pv45": {
+        "signalMultiplier": 9.6427944807288,
+        "impliedExpectedHits": 1.9615073893736934,
+        "meanTop8MarginalProbability": 0.24518842367006746,
+        "exact8Odds": 11306534.71545661
+      }
+    },
+    "confidenceGate": {
+      "status": "FAIL",
+      "required": [
+        "upstream pre-draw process model beats uniform on locked Brier and log loss",
+        "prospective performance persists across at least 50, preferably 100–200 future draws",
+        "multiplicity-adjusted statistical evidence",
+        "nominal EV > RM1",
+        "PV-adjusted EV > RM1",
+        "conservative lower confidence bound on EV > RM1 after model uncertainty and prize-sharing/cap assumptions"
+      ],
+      "currentReason": "The current research vector is only modestly better than fair on ranking and remains deeply negative-EV."
     }
   }
 };
