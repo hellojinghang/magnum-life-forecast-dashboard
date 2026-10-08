@@ -1,0 +1,182 @@
+{
+  "version": "V5",
+  "cutoff": "2026-10-07",
+  "objective": "Test publicly observable exogenous pre-draw process states and begin immutable prospective validation, following the independent validation report.",
+  "officialProcessContext": {
+    "regularDrawDays": [
+      "Wednesday",
+      "Saturday",
+      "Sunday"
+    ],
+    "specialDraws": "Usually Tuesday, subject to Ministry of Finance / Treasury permission",
+    "drawTime": "19:00 MYT",
+    "drawLocation": "Wisma Magnum draw auditorium, Kuala Lumpur",
+    "drawMechanism": "23 winning numbers drawn using see-through electromechanical drums, operated by randomly selected public participants via remote control"
+  },
+  "data": {
+    "fourDDraws": 1051,
+    "from": "2020-01-01",
+    "to": "2026-10-07",
+    "yearCounts": {
+      "2020": 126,
+      "2021": 126,
+      "2022": 179,
+      "2023": 165,
+      "2024": 164,
+      "2025": 165,
+      "2026": 126
+    },
+    "specialDraws": 75,
+    "regularDraws": 976,
+    "lifeBridgeDraws2026": 126
+  },
+  "publicMetadataGap": [
+    "machine/drum identifier by draw",
+    "ball-set identifier or rotation",
+    "maintenance/replacement log",
+    "equipment calibration log",
+    "documented machine-change dates"
+  ],
+  "candidateSearch": {
+    "configurations": 200,
+    "alphaGrid": [
+      20,
+      50,
+      100,
+      200,
+      500
+    ],
+    "stateBlendGrid": [
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "states": [
+      "special",
+      "weekday",
+      "gap",
+      "back-to-back",
+      "7-day density",
+      "month",
+      "quarter",
+      "weekday×gap",
+      "special×gap",
+      "special×month"
+    ],
+    "selectionYear": 2024,
+    "confirmationYear": 2025,
+    "lockedTestYear": 2026,
+    "selected": "month_a500_l0.25"
+  },
+  "prefixValidation": {
+    "uniform": {
+      "2024": {
+        "logloss": 4.60517018598808,
+        "brier": 0.9900000000000001
+      },
+      "2025": {
+        "logloss": 4.60517018598808,
+        "brier": 0.9900000000000001
+      },
+      "2026": {
+        "logloss": 4.605170185988082,
+        "brier": 0.9899999999999977
+      }
+    },
+    "selected": {
+      "2024": {
+        "logloss": 4.6138151695284995,
+        "brier": 0.9901724060921245,
+        "deltaLogloss": 0.008644983540419322,
+        "deltaBrier": 0.0001724060921243847
+      },
+      "2025": {
+        "logloss": 4.609626680266965,
+        "brier": 0.9900869476706682,
+        "deltaLogloss": 0.004456494278884726,
+        "deltaBrier": 0.00008694767066808007
+      },
+      "2026": {
+        "logloss": 4.611625017718023,
+        "brier": 0.9901245906913441,
+        "deltaLogloss": 0.00645483172994199,
+        "deltaBrier": 0.0001245906913463759
+      }
+    },
+    "conclusion": "The selected exogenous model is worse than uniform on log loss and Brier in every locked year."
+  },
+  "researchBridge2026": {
+    "status": "PROSPECTIVE_WATCH_ONLY",
+    "draws": 126,
+    "meanTop8Hits": 1.9126984126984128,
+    "hitRate": 0.2390873015873016,
+    "fairMeanHits": 1.7777777777777777,
+    "oneSidedP": 0.08172338262648512,
+    "brier": 0.1728324043552914,
+    "uniformBrier": 0.1728395061728395,
+    "logloss": 0.5296858663093739,
+    "uniformLogloss": 0.5297061990576545
+  },
+  "nextProspective": {
+    "drawDate": "2026-10-10",
+    "frozenAt": "2026-10-08T08:57:00+08:00",
+    "deploymentStatus": "UNIFORM_BASELINE_ONLY",
+    "deploymentProbabilityEach": 0.2222222222222222,
+    "rankedDeploymentSet": null,
+    "blockedResearchTop12": [
+      {
+        "number": 35,
+        "score": 0.2269243251485871
+      },
+      {
+        "number": 30,
+        "score": 0.22502707763384452
+      },
+      {
+        "number": 26,
+        "score": 0.22455200351224347
+      },
+      {
+        "number": 5,
+        "score": 0.22438390588540197
+      },
+      {
+        "number": 28,
+        "score": 0.2241494277180459
+      },
+      {
+        "number": 15,
+        "score": 0.22411842879306454
+      },
+      {
+        "number": 29,
+        "score": 0.22387065767983177
+      },
+      {
+        "number": 12,
+        "score": 0.2238055164236165
+      },
+      {
+        "number": 18,
+        "score": 0.2236291700858527
+      },
+      {
+        "number": 4,
+        "score": 0.22355333748566236
+      },
+      {
+        "number": 8,
+        "score": 0.22339259671602665
+      },
+      {
+        "number": 22,
+        "score": 0.2230651837595689
+      }
+    ]
+  },
+  "deploymentGate": {
+    "status": "UNIFORM_BASELINE_ONLY",
+    "reason": "Public exogenous process states do not improve the underlying 4D prefix forecast on locked proper scores. The downstream Life bridge is only suggestive and does not meet the validator's significance/persistence standard."
+  }
+}
