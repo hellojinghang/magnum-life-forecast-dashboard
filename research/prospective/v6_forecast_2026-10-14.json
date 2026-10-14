@@ -1,0 +1,89 @@
+{
+  "model": "V5+V6",
+  "draw_date": "2026-10-14",
+  "data_cutoff": "2026-10-11",
+  "training_draws": 1053,
+  "method": "V5 month_a500_l0.25 4D-prefix bridge; V6 fixed-size conditional Bernoulli model",
+  "sets": [
+    {
+      "rank": 1,
+      "numbers": [
+        5,
+        12,
+        15,
+        26,
+        28,
+        29,
+        30,
+        35
+      ],
+      "probability": 3.669028864516437e-8,
+      "nominal_ev": 0.5972235139446748
+    },
+    {
+      "rank": 2,
+      "numbers": [
+        5,
+        15,
+        18,
+        26,
+        28,
+        29,
+        30,
+        35
+      ],
+      "probability": 3.6643857296727643e-8,
+      "nominal_ev": 0.596628876301168
+    },
+    {
+      "rank": 3,
+      "numbers": [
+        5,
+        15,
+        16,
+        26,
+        28,
+        29,
+        30,
+        35
+      ],
+      "probability": 3.6632908021580406e-8,
+      "nominal_ev": 0.5964886435258269
+    },
+    {
+      "rank": 4,
+      "numbers": [
+        4,
+        5,
+        15,
+        26,
+        28,
+        29,
+        30,
+        35
+      ],
+      "probability": 3.66300001659007e-8,
+      "nominal_ev": 0.5964514007042268
+    },
+    {
+      "rank": 5,
+      "numbers": [
+        5,
+        12,
+        15,
+        18,
+        26,
+        28,
+        30,
+        35
+      ],
+      "probability": 3.6625009971938965e-8,
+      "nominal_ev": 0.5963874462646246
+    }
+  ],
+  "statistical_gate": "FAIL",
+  "economic_gate": "FAIL",
+  "status": "RESEARCH_ONLY",
+  "note": "Model probabilities are unvalidated; under a fair draw every combination has equal chance 1/30260340.",
+  "source": "https://github.com/deadboy18/malaysia-4d/blob/main/data/magnum_draws.csv"
+}
