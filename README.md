@@ -53,10 +53,20 @@ The research candidate is not a deployed betting recommendation.
 - `research/fetch_official_snapshot.py`
 - prior V3/V4 models and metrics
 
+## Current frozen forecast
+
+The next regular draw is **21 October 2026 (Draw 438/26)**. A five-set V6 consensus research forecast has been frozen in the prospective registry using only data through **18 October 2026**.
+
+Top-ranked exact set:
+
+`10 19 21 25 28 30 33 35`
+
+Estimated research-model exact-set odds are about **1 in 21.13 million**, versus the fair **1 in 30.26 million**, but the V6 economic gate remains negative: nominal EV about **RM0.731/RM1** and PV-adjusted EV about **RM0.615/RM1**. Therefore this remains research-only, not a positive-EV deployment.
+
 ## GitHub Pages
 
 Enable **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
 
-Latest research cutoff: **7 October 2026**.
+Latest research cutoff: **18 October 2026**.
 
 This repository is statistical research. No historical or research-only ranking is a guarantee of future lottery results.
