@@ -9,21 +9,22 @@ The project no longer treats "better than random ranking" as sufficient. A model
 1. **Statistical gate** — pre-draw probabilities outperform the fair baseline on locked/prospective Brier score, log loss, ranking performance and adjusted significance.
 2. **Economic gate** — the conservative expected payout remains above **RM1 per RM1 stake**, including time value, model uncertainty, and reasonable payout-sharing/cap haircuts.
 
-## V6 result
+## Latest V6 forecast (7 November 2026)
 
-Using the current blocked V5 research probability vector, V6 estimates:
+The active research forecast targets **Saturday, 7 November 2026 (Draw 446/26)**. It was committed before the 7:00 PM MYT draw with **all model inputs cut off at 4 November 2026**. The on-demand freeze occurred at 05:54 MYT on 7 November, later than the preferred Friday noon schedule. It is not backdated.
 
-- Fair nominal EV: **RM0.550 / RM1**
-- Current model nominal EV: **RM0.598 / RM1**
-- Current model PV-adjusted EV: **RM0.508 / RM1**
-- Nominal expected return: **−40.2%**
-- PV-adjusted expected return: **−49.2%**
+- **Top-ranked set:** `03 10 19 25 28 30 35 36`
+- **Model exact-set odds (unvalidated):** about 1 in 22.30 million, or 1.357× the fair mathematical benchmark.
+- **Fair benchmark:** 1 in 30,260,340 for every valid eight-number set.
+- **Top-set nominal EV:** RM0.700 per RM1 (expected ROI −29.97%).
+- **Top-set PV-adjusted EV:** RM0.590 per RM1.
+- **Statistical gate:** FAIL, no verified prospective edge.
+- **Economic gate:** FAIL, expected return negative.
+- **Decision:** Research only. No betting recommendation.
 
-So the current deployment status is:
+The full five ranked sets, 36-number vector, assumptions, and economic estimates are in [the frozen 7 November record](research/prospective/v6_forecast_2026-11-07.json). The updated 139-draw 2026 Life dataset is in [research/snapshots](research/snapshots/magnum_life_2026_through_2026-11-04.csv). Previously frozen 14/21/24 October candidates were evaluated [here](research/prospective/evaluation_2026-11-07_cutoff_2026-11-04.json) without modifying the originals.
 
-**`NO_BET_POSITIVE_EV_NOT_ESTABLISHED`**
-
-V6 estimates that the current signal would need to be roughly **7.22× stronger** for nominal break-even and **9.64× stronger** for the PV-adjusted break-even screen.
+The `data.js` dashboard has also been refreshed for the 7 November draw. Historical V6 break-even signal multipliers in older research documentation are not re-estimated by this forecast refresh.
 
 ## V5 prospective watch
 
@@ -55,18 +56,12 @@ The research candidate is not a deployed betting recommendation.
 
 ## Current frozen forecast
 
-The next regular draw is **21 October 2026 (Draw 438/26)**. A five-set V6 consensus research forecast has been frozen in the prospective registry using only data through **18 October 2026**.
-
-Top-ranked exact set:
-
-`10 19 21 25 28 30 33 35`
-
-Estimated research-model exact-set odds are about **1 in 21.13 million**, versus the fair **1 in 30.26 million**, but the V6 economic gate remains negative: nominal EV about **RM0.731/RM1** and PV-adjusted EV about **RM0.615/RM1**. Therefore this remains research-only, not a positive-EV deployment.
+See [the active 7 November prospective V6 record](research/prospective/v6_forecast_2026-11-07.json) with a 4 November input cutoff. The 2026 Life and 4D process inputs were refreshed, but the model remains research-only.
 
 ## GitHub Pages
 
 Enable **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
 
-Latest research cutoff: **18 October 2026**.
+Latest research cutoff: **4 November 2026**.
 
 This repository is statistical research. No historical or research-only ranking is a guarantee of future lottery results.
