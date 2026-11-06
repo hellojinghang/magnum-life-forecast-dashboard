@@ -1,11 +1,11 @@
 window.MODEL_DATA = {
   "meta": {
     "title": "Magnum Life Forecast Lab",
-    "dataCutoff": "2026-10-18",
-    "generated": "2026-10-20",
+    "dataCutoff": "2026-11-04",
+    "generated": "2026-11-07",
     "baselineHits": 1.7777777777777777,
     "baselineRate": 0.2222222222222222,
-    "modelVersion": "V6"
+    "modelVersion": "V6 (4 Nov data)"
   },
   "status": {
     "v1": {
@@ -143,7 +143,7 @@ window.MODEL_DATA = {
   "forecasts": {
     "v1": {
       "label": "V1 pre-draw research sets",
-      "description": "Rolling-60 Life frequency model with 30% shrinkage to the 8/36 baseline. Sets are diversified from the current ranked probability vector.",
+      "description": "Rolling-60 Life frequency model with 30% shrinkage to the 8/36 baseline. Sets are diversified from the current ranked probability vector. Note: this version-tab's example sets are archived; latest recalculated 4 Nov consensus is in V6.",
       "sets": [
         {
           "id": 1,
@@ -269,7 +269,7 @@ window.MODEL_DATA = {
     },
     "v2": {
       "label": "V2 experimental pre-draw extrapolation",
-      "description": "Experimental bridge from a rolling 4D leading-prefix distribution into the V2 structural mapping. The V2 pre-draw gate failed, so these are research scenarios, not a verified edge.",
+      "description": "Experimental bridge from a rolling 4D leading-prefix distribution into the V2 structural mapping. The V2 pre-draw gate failed, so these are research scenarios, not a verified edge. Note: this version-tab's example sets are archived; latest recalculated 4 Nov consensus is in V6.",
       "sets": [
         {
           "id": 1,
@@ -400,7 +400,7 @@ window.MODEL_DATA = {
     },
     "v3": {
       "label": "V3 adaptive multi-horizon research sets",
-      "description": "Adaptive ensemble of 10, 20, 30, 50, 60, 100 and all-to-date Life-frequency experts plus a uniform 8/36 expert. Recent calibration is worse than uniform, so the V3 guardrail currently halves the non-uniform signal strength.",
+      "description": "Adaptive ensemble of 10, 20, 30, 50, 60, 100 and all-to-date Life-frequency experts plus a uniform 8/36 expert. Recent calibration is worse than uniform, so the V3 guardrail currently halves the non-uniform signal strength. Note: this version-tab's example sets are archived; latest recalculated 4 Nov consensus is in V6.",
       "sets": [
         {
           "id": 1,
@@ -565,133 +565,133 @@ window.MODEL_DATA = {
       "researchNote": "Month-conditioned hierarchical 4D-prefix probabilities are retained only as a prospective watch candidate."
     },
     "v6": {
-      "label": "21 Oct 2026 · V6 research Grand Prize ranking",
-      "description": "Five exact 8-number sets ranked by the current family-balanced V1–V5 research consensus and priced by the V6 economic gate. These are frozen research forecasts, not a positive-EV deployment.",
+      "label": "7 Nov 2026 · V6 current research Grand Prize ranking",
+      "description": "Five exact 8-number sets refreshed from 139 Life draws in 2026 and 1,064 Magnum 4D draws through 4 Nov 2026. Frozen before the 7 Nov draw. V1/V3 Life family plus V2/V4/V5 4D family, converted to V6 exact-set probabilities. Experimental only: no validated edge, negative EV.",
       "sets": [
         {
           "id": 1,
           "numbers": [
+            3,
             10,
             19,
-            21,
             25,
             28,
             30,
-            33,
-            35
+            35,
+            36
           ],
-          "score": 4.7317517079761104e-8
+          "score": 4.4852893540222937e-8
         },
         {
           "id": 2,
           "numbers": [
-            9,
             10,
             19,
             21,
             25,
             28,
-            33,
-            35
+            30,
+            35,
+            36
           ],
-          "score": 4.7314226735873097e-8
+          "score": 4.4850039119764176e-8
         },
         {
           "id": 3,
           "numbers": [
-            9,
+            3,
             10,
             19,
+            21,
             25,
             28,
-            30,
-            33,
-            35
+            35,
+            36
           ],
-          "score": 4.702753768995403e-8
+          "score": 4.4796236154194634e-8
         },
         {
           "id": 4,
           "numbers": [
-            4,
+            2,
             10,
             19,
-            21,
             25,
             28,
-            33,
-            35
+            30,
+            35,
+            36
           ],
-          "score": 4.694343974382816e-8
+          "score": 4.475340524479998e-8
         },
         {
           "id": 5,
           "numbers": [
-            9,
+            2,
+            3,
             10,
             19,
-            21,
             25,
             28,
-            30,
-            35
+            35,
+            36
           ],
-          "score": 4.679595571798509e-8
+          "score": 4.4699718203076876e-8
         }
       ],
       "top12": [
         {
           "number": 25,
-          "score": 0.2332421904044978
+          "score": 0.2342559506708359
         },
         {
           "number": 19,
-          "score": 0.23302525146207834
-        },
-        {
-          "number": 35,
-          "score": 0.23296912667218767
+          "score": 0.23228573935680671
         },
         {
           "number": 10,
-          "score": 0.23231469225546908
+          "score": 0.22984114810566444
         },
         {
           "number": 28,
-          "score": 0.22893506219420318
+          "score": 0.22973268115548312
         },
         {
-          "number": 33,
-          "score": 0.22835755612640132
-        },
-        {
-          "number": 21,
-          "score": 0.2274635849880599
-        },
-        {
-          "number": 30,
-          "score": 0.22636646040491556
-        },
-        {
-          "number": 9,
-          "score": 0.22635392961075781
-        },
-        {
-          "number": 4,
-          "score": 0.22493949324828472
-        },
-        {
-          "number": 15,
-          "score": 0.22433548427828548
+          "number": 35,
+          "score": 0.22938758322685657
         },
         {
           "number": 36,
-          "score": 0.22397528504982078
+          "score": 0.22619114897244502
+        },
+        {
+          "number": 30,
+          "score": 0.2257233368268287
+        },
+        {
+          "number": 3,
+          "score": 0.2255075603026025
+        },
+        {
+          "number": 21,
+          "score": 0.22549612409933234
+        },
+        {
+          "number": 2,
+          "score": 0.22510878186329492
+        },
+        {
+          "number": 14,
+          "score": 0.2245899763144006
+        },
+        {
+          "number": 22,
+          "score": 0.2244816286019639
         }
       ],
       "deployment": "NO_BET_POSITIVE_EV_NOT_ESTABLISHED",
       "uniformProbability": 0.2222222222222222,
-      "nextDraw": "2026-10-21"
+      "nextDraw": "2026-11-07"
     }
   },
   "history": {
@@ -1367,8 +1367,8 @@ window.MODEL_DATA = {
     ]
   },
   "dataUsed": {
-    "cutoff": "2026-10-18",
-    "rowLevelDraws": 422,
+    "cutoff": "2026-11-04",
+    "rowLevelDraws": 430,
     "development1819": {
       "draws": 291,
       "from": "2018-04-25",
@@ -1376,22 +1376,22 @@ window.MODEL_DATA = {
       "note": "124 draws in 2018 + 167 draws in 2019"
     },
     "recent2026": {
-      "draws": 131,
+      "draws": 139,
       "from": "2026-01-03",
-      "to": "2026-10-18",
+      "to": "2026-11-04",
       "note": "Current reconstructed 2026 Life sequence used for V1/V3 live forecast state."
     },
     "v2Paired": {
-      "draws": 422,
+      "draws": 430,
       "note": "Paired Life + same-draw 4D records used for V2 structural analysis across 2018, 2019 and 2026."
     },
     "v2FourDProcess": {
-      "draws": 1056,
+      "draws": 1064,
       "from": "2020",
-      "to": "2026-10-18",
+      "to": "2026-11-04",
       "note": "Underlying 4D process sample used in the V2 pre-draw digit study."
     },
-    "caveat": "The V3 row-level Life ensemble currently uses the reconstructed 2018–2019 and 2026 sequences available in the research package; 2020–2025 Life rows are not used in the V3 rolling ensemble yet."
+    "caveat": "Latest V6 consensus recalculated using Magnum Life 2026 January–November rows (139) and historical Magnum 4D 2020–4 Nov 2026 (1,064). V3's training source still excludes 2020–2025 Life rows. All V1–V5 forecast components are research-only; none passed statistical promotion. Older version-tab example sets and locked holdout metrics may reflect earlier snapshots."
   },
   "v3": {
     "deploymentGate": {
@@ -1416,17 +1416,17 @@ window.MODEL_DATA = {
       "description": "Adaptive multi-horizon Life-frequency ensemble with a uniform expert and a recent-calibration guardrail."
     },
     "currentWeights": {
-      "10": 0.060559304746105116,
-      "20": 0.09606656940676458,
-      "30": 0.11421955864362442,
-      "50": 0.12694943542885107,
-      "60": 0.1265076211050153,
-      "100": 0.13256345793720498,
-      "all": 0.13363463066032516,
-      "uniform": 0.20949942207210934
+      "10": 0.06032201125794502,
+      "20": 0.09423605144587492,
+      "30": 0.11096912864621315,
+      "50": 0.12398568704815077,
+      "60": 0.12536950023027638,
+      "100": 0.13376946343997737,
+      "all": 0.1353645909953979,
+      "uniform": 0.2159835669361645
     },
     "currentGuard": 0.5,
-    "recentRawBrier30": 0.17295599254725438,
+    "recentRawBrier30": 0.17310483836410767,
     "uniformBrier": 0.1728395061728395
   },
   "v4": {
@@ -1878,30 +1878,30 @@ window.MODEL_DATA = {
     "distributionModel": {
       "type": "fixed-size conditional Bernoulli / maximum-entropy set model",
       "ticket": [
+        3,
         10,
         19,
-        21,
         25,
         28,
         30,
-        33,
-        35
+        35,
+        36
       ],
-      "currentExpectedHits": 1.8426739245127928,
-      "currentExact8Probability": 4.7317517079761104e-8,
-      "currentExact8Odds": 21133822.403799653,
+      "currentExpectedHits": 1.832925148617523,
+      "currentExact8Probability": 4.4852893540222937e-8,
+      "currentExact8Odds": 22295105.64582027,
       "fairExact8Odds": 30260340,
-      "exact8Lift": 1.431844154789378
+      "exact8Lift": 1.3572638085109496
     },
     "currentEconomics": {
       "fairNominalEV": 0.5501610358641047,
       "fairPV45EV": 0.468996581003386,
-      "modelNominalEV": 0.7308381667042628,
-      "modelPV45EV": 0.6146491553492157,
-      "nominalReturnPct": -26.91618332957372,
-      "pv45ReturnPct": -38.53508446507843,
-      "nominalLiftVsFair": 1.087263498503513,
-      "pvLiftVsFair": 1.0829124658329456
+      "modelNominalEV": 0.7002975224780459,
+      "modelPV45EV": 0.5901568471817042,
+      "nominalReturnPct": -29.970247752195412,
+      "pv45ReturnPct": -40.98431528182957,
+      "nominalLiftVsFair": 1.2728955284485586,
+      "pvLiftVsFair": 1.2583393378243914
     },
     "breakEvenStress": {
       "interpretation": "Scale the current deviation from 8/36 while preserving its ranking pattern, then solve for EV=RM1.",
@@ -1929,489 +1929,348 @@ window.MODEL_DATA = {
         "conservative lower confidence bound on EV > RM1 after model uncertainty and prize-sharing/cap assumptions"
       ],
       "currentReason": "The current research vector is only modestly better than fair on ranking and remains deeply negative-EV."
-    }
+    },
+    "breakEvenStressNote": "Break-even signal multipliers shown elsewhere may refer to an earlier V6 snapshot; not recalculated in this refresh."
   },
   "currentForecast": {
-    "drawDate": "2026-10-21",
-    "drawNo": "438/26",
-    "frozenAt": "2026-10-20T19:13:00+08:00",
-    "dataCutoff": "2026-10-18",
-    "framework": "Family-balanced V1–V5 research consensus; V6 economic gate",
+    "drawDate": "2026-11-07",
+    "drawNo": "446/26",
+    "frozenAt": "2026-11-07T05:54:27+08:00",
+    "dataCutoff": "2026-11-04",
+    "framework": "50% Life-history family (equal V1 rolling60 and V3 adaptive) + 50% 4D-process family (equal V2 research rolling50, V4 long_a200, V5 month_a500_l0.25), V6 conditional-Bernoulli fixed 8-of-36 exact-set distribution",
     "fairExactSetProbability": 3.3046555326212464e-8,
     "fairExactSetOdds": 30260340,
     "sets": [
       {
         "rank": 1,
         "numbers": [
+          3,
           10,
           19,
-          21,
           25,
           28,
           30,
-          33,
-          35
+          35,
+          36
         ],
-        "exactGrandProb": 4.7317517079761104e-8,
-        "odds": 21133822.349857096,
-        "liftVsFair": 1.431844154789378
+        "exactGrandProb": 4.4852893540222937e-8,
+        "odds": 22295105.64582027,
+        "liftVsFair": 1.3572638085109496
       },
       {
         "rank": 2,
         "numbers": [
-          9,
           10,
           19,
           21,
           25,
           28,
-          33,
-          35
+          30,
+          35,
+          36
         ],
-        "exactGrandProb": 4.7314226735873097e-8,
-        "odds": 21135292.04614078,
-        "liftVsFair": 1.43174458786461
+        "exactGrandProb": 4.4850039119764176e-8,
+        "odds": 22296524.587853204,
+        "liftVsFair": 1.3571774327773647
       },
       {
         "rank": 3,
         "numbers": [
-          9,
+          3,
           10,
           19,
+          21,
           25,
           28,
-          30,
-          33,
-          35
+          35,
+          36
         ],
-        "exactGrandProb": 4.702753768995403e-8,
-        "odds": 21264136.910438728,
-        "liftVsFair": 1.4230692798608235
+        "exactGrandProb": 4.4796236154194634e-8,
+        "odds": 22323304.050765924,
+        "liftVsFair": 1.3555493367462221
       },
       {
         "rank": 4,
         "numbers": [
-          4,
+          2,
           10,
           19,
-          21,
           25,
           28,
-          33,
-          35
+          30,
+          35,
+          36
         ],
-        "exactGrandProb": 4.694343974382816e-8,
-        "odds": 21302231.05628884,
-        "liftVsFair": 1.420524447417753
+        "exactGrandProb": 4.475340524479998e-8,
+        "odds": 22344668.400762483,
+        "liftVsFair": 1.3542532588654306
       },
       {
         "rank": 5,
         "numbers": [
-          9,
+          2,
+          3,
           10,
           19,
-          21,
           25,
           28,
-          30,
-          35
+          35,
+          36
         ],
-        "exactGrandProb": 4.679595571798509e-8,
-        "odds": 21369368.028863017,
-        "liftVsFair": 1.4160615306511728
+        "exactGrandProb": 4.4699718203076876e-8,
+        "odds": 22371505.68728117,
+        "liftVsFair": 1.3526286707292954
       }
     ],
     "consensusTop12": [
       {
         "number": 25,
-        "score": 0.2332421904044978
+        "score": 0.2342559506708359
       },
       {
         "number": 19,
-        "score": 0.23302525146207834
-      },
-      {
-        "number": 35,
-        "score": 0.23296912667218767
+        "score": 0.23228573935680671
       },
       {
         "number": 10,
-        "score": 0.23231469225546908
+        "score": 0.22984114810566444
       },
       {
         "number": 28,
-        "score": 0.22893506219420318
+        "score": 0.22973268115548312
       },
       {
-        "number": 33,
-        "score": 0.22835755612640132
-      },
-      {
-        "number": 21,
-        "score": 0.2274635849880599
-      },
-      {
-        "number": 30,
-        "score": 0.22636646040491556
-      },
-      {
-        "number": 9,
-        "score": 0.22635392961075781
-      },
-      {
-        "number": 4,
-        "score": 0.22493949324828472
-      },
-      {
-        "number": 15,
-        "score": 0.22433548427828548
+        "number": 35,
+        "score": 0.22938758322685657
       },
       {
         "number": 36,
-        "score": 0.22397528504982078
+        "score": 0.22619114897244502
+      },
+      {
+        "number": 30,
+        "score": 0.2257233368268287
+      },
+      {
+        "number": 3,
+        "score": 0.2255075603026025
+      },
+      {
+        "number": 21,
+        "score": 0.22549612409933234
+      },
+      {
+        "number": 2,
+        "score": 0.22510878186329492
+      },
+      {
+        "number": 14,
+        "score": 0.2245899763144006
+      },
+      {
+        "number": 22,
+        "score": 0.2244816286019639
       }
     ],
     "consensusVector": [
-      0.2209397057359779,
-      0.2236281417222597,
-      0.22141253753185874,
-      0.22493949324828472,
-      0.22095250827177443,
-      0.21780320313774648,
-      0.21582782472303944,
-      0.2218297591843485,
-      0.22635392961075781,
-      0.23231469225546908,
-      0.21954364506128457,
-      0.22081150662935037,
-      0.2164202034875609,
-      0.21766980868158883,
-      0.22433548427828548,
-      0.22046300663466106,
-      0.21783709618163336,
-      0.22123251622127768,
-      0.23302525146207834,
-      0.22279053942313948,
-      0.2274635849880599,
-      0.22295323338970893,
-      0.22085979497891284,
-      0.22194468008584292,
-      0.2332421904044978,
-      0.21182590797793688,
-      0.21986139303473787,
-      0.22893506219420318,
-      0.21228338426174528,
-      0.22636646040491556,
-      0.21370909733635246,
-      0.21672230590888136,
-      0.22835755612640132,
-      0.21840008370341707,
-      0.23296912667218767,
-      0.22397528504982078
+      0.22154089047503617,
+      0.22510878186329492,
+      0.2255075603026025,
+      0.22209075006903808,
+      0.22059901882873592,
+      0.22171982300332102,
+      0.22017940679851733,
+      0.22030379830140664,
+      0.22050131578625298,
+      0.22984114810566444,
+      0.2208485148849219,
+      0.22076591382548397,
+      0.21824905608071993,
+      0.2245899763144006,
+      0.22358045971163357,
+      0.21997906932374306,
+      0.2171247559352465,
+      0.2196544031663376,
+      0.23228573935680671,
+      0.2208537367765144,
+      0.22549612409933234,
+      0.2244816286019639,
+      0.2160415380826845,
+      0.21948949959965858,
+      0.2342559506708359,
+      0.21409742991983166,
+      0.22323718572351792,
+      0.22973268115548312,
+      0.21570427804240375,
+      0.2257233368268287,
+      0.21133856445811852,
+      0.22191931587545877,
+      0.22301384255984116,
+      0.21456577327505838,
+      0.22938758322685657,
+      0.22619114897244502
     ],
     "economics": {
-      "nominalEV": 0.7308381667042628,
-      "pv45EV": 0.6146491553492157,
-      "nominalReturnPct": -26.91618332957372,
-      "pv45ReturnPct": -38.53508446507843,
-      "expectedTop8Hits": 1.8426739245127928,
-      "exact8OddsTopSet": 21133822.403799653,
+      "nominalEV": 0.7002975224780459,
+      "pv45EV": 0.5901568471817042,
+      "nominalReturnPct": -29.970247752195412,
+      "pv45ReturnPct": -40.98431528182957,
       "gate": "NEGATIVE_EXPECTED_RETURN"
     },
-    "modelTop12": {
-      "v1": [
-        {
-          "number": 19,
-          "score": 0.2555555555555556
-        },
-        {
-          "number": 25,
-          "score": 0.2555555555555556
-        },
-        {
-          "number": 10,
-          "score": 0.25055555555555553
-        },
-        {
-          "number": 35,
-          "score": 0.24555555555555558
-        },
-        {
-          "number": 21,
-          "score": 0.2405555555555556
-        },
-        {
-          "number": 33,
-          "score": 0.2405555555555556
-        },
-        {
-          "number": 4,
-          "score": 0.2355555555555556
-        },
-        {
-          "number": 9,
-          "score": 0.2355555555555556
-        },
-        {
-          "number": 28,
-          "score": 0.2355555555555556
-        },
-        {
-          "number": 2,
-          "score": 0.23055555555555557
-        },
-        {
-          "number": 36,
-          "score": 0.23055555555555557
-        },
-        {
-          "number": 1,
-          "score": 0.22555555555555554
-        }
-      ],
-      "v2": [
-        {
-          "number": 30,
-          "score": 0.23763655001859524
-        },
-        {
-          "number": 29,
-          "score": 0.23301950631918172
-        },
-        {
-          "number": 35,
-          "score": 0.23190166064030002
-        },
-        {
-          "number": 11,
-          "score": 0.2283709930939339
-        },
-        {
-          "number": 28,
-          "score": 0.22708076544986452
-        },
-        {
-          "number": 32,
-          "score": 0.22670757654210943
-        },
-        {
-          "number": 5,
-          "score": 0.22670054932613826
-        },
-        {
-          "number": 25,
-          "score": 0.2259480281780853
-        },
-        {
-          "number": 18,
-          "score": 0.2255627597506853
-        },
-        {
-          "number": 17,
-          "score": 0.22497955923785776
-        },
-        {
-          "number": 33,
-          "score": 0.22477450208029195
-        },
-        {
-          "number": 16,
-          "score": 0.22420448925197076
-        }
-      ],
-      "v3": [
-        {
-          "number": 10,
-          "score": 0.23515746110541613
-        },
-        {
-          "number": 25,
-          "score": 0.23377399112323416
-        },
-        {
-          "number": 19,
-          "score": 0.231728877138328
-        },
-        {
-          "number": 35,
-          "score": 0.23061309494877977
-        },
-        {
-          "number": 21,
-          "score": 0.23010987627947246
-        },
-        {
-          "number": 28,
-          "score": 0.22982890989548213
-        },
-        {
-          "number": 15,
-          "score": 0.22893559675385358
-        },
-        {
-          "number": 9,
-          "score": 0.22890221367952088
-        },
-        {
-          "number": 33,
-          "score": 0.2280026617578158
-        },
-        {
-          "number": 36,
-          "score": 0.22682539098743723
-        },
-        {
-          "number": 22,
-          "score": 0.22604667245127993
-        },
-        {
-          "number": 2,
-          "score": 0.2258722629669965
-        }
-      ],
-      "v4": [
-        {
-          "number": 30,
-          "score": 0.22559760412910543
-        },
-        {
-          "number": 29,
-          "score": 0.22544356423551365
-        },
-        {
-          "number": 15,
-          "score": 0.22528634312198753
-        },
-        {
-          "number": 35,
-          "score": 0.22508172359244769
-        },
-        {
-          "number": 5,
-          "score": 0.2248742532854811
-        },
-        {
-          "number": 28,
-          "score": 0.224517738520689
-        },
-        {
-          "number": 26,
-          "score": 0.22444871039288775
-        },
-        {
-          "number": 4,
-          "score": 0.22360242574398018
-        },
-        {
-          "number": 3,
-          "score": 0.22299669720805607
-        },
-        {
-          "number": 19,
-          "score": 0.22277999685694588
-        },
-        {
-          "number": 18,
-          "score": 0.2227492679341696
-        },
-        {
-          "number": 10,
-          "score": 0.22262269904742163
-        }
-      ],
-      "v5": [
-        {
-          "number": 35,
-          "score": 0.2265784000438757
-        },
-        {
-          "number": 30,
-          "score": 0.22586474769187886
-        },
-        {
-          "number": 5,
-          "score": 0.22452446881515847
-        },
-        {
-          "number": 26,
-          "score": 0.22426778347206608
-        },
-        {
-          "number": 29,
-          "score": 0.22404487892727992
-        },
-        {
-          "number": 28,
-          "score": 0.2239351710181095
-        },
-        {
-          "number": 15,
-          "score": 0.22386759753713156
-        },
-        {
-          "number": 12,
-          "score": 0.2237477436336061
-        },
-        {
-          "number": 18,
-          "score": 0.22369940716821274
-        },
-        {
-          "number": 4,
-          "score": 0.2234496070303002
-        },
-        {
-          "number": 16,
-          "score": 0.2233361213459356
-        },
-        {
-          "number": 22,
-          "score": 0.2232000621291703
-        }
-      ]
-    }
+    "frozenRegistryPath": "research/prospective/v6_forecast_2026-11-07.json",
+    "frozenCommit": "ddc11a36a82cb21cb100bee233bc4a8a2bfad33d"
   },
   "latestResults": [
     {
-      "date": "2026-10-10",
-      "drawNo": "433/26",
+      "date": "2026-10-21",
+      "drawNo": "438/26",
       "main": [
-        22,
-        23,
-        25,
-        28,
-        30,
-        31,
+        3,
+        16,
+        18,
+        26,
+        29,
         32,
+        35,
         36
       ],
       "bonus": [
-        4,
+        10,
+        24
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "drawNo": "439/26",
+      "main": [
+        6,
+        11,
+        12,
+        14,
+        22,
+        27,
+        28,
+        32
+      ],
+      "bonus": [
+        5,
         26
       ]
     },
     {
-      "date": "2026-10-11",
-      "drawNo": "434/26",
+      "date": "2026-10-25",
+      "drawNo": "440/26",
       "main": [
-        2,
+        3,
+        4,
         7,
         14,
-        15,
-        16,
+        18,
+        19,
         22,
-        25,
+        36
+      ],
+      "bonus": [
+        11,
+        34
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "drawNo": "441/26",
+      "main": [
+        1,
+        3,
+        14,
+        19,
+        20,
+        21,
+        24,
+        30
+      ],
+      "bonus": [
+        2,
+        35
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "drawNo": "442/26",
+      "main": [
+        2,
+        5,
+        6,
+        11,
+        13,
+        15,
+        17,
         27
       ],
       "bonus": [
-        21,
-        26
+        29,
+        31
       ]
     },
     {
-      "date": "2026-10-14",
-      "drawNo": "435/26",
+      "date": "2026-10-31",
+      "drawNo": "443/26",
       "main": [
+        1,
+        12,
+        13,
+        14,
+        19,
+        25,
+        28,
+        36
+      ],
+      "bonus": [
+        7,
+        21
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "drawNo": "444/26",
+      "main": [
+        6,
+        8,
+        16,
+        17,
+        26,
+        27,
+        29,
+        32
+      ],
+      "bonus": [
+        3,
+        20
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "drawNo": "445/26",
+      "main": [
+        3,
+        5,
+        7,
+        10,
+        13,
+        14,
+        25,
+        32
+      ],
+      "bonus": [
+        4,
+        11
+      ]
+    }
+  ],
+  "prospectiveEvaluations": [
+    {
+      "draw_date": "2026-10-14",
+      "draw_no": null,
+      "actual_main": [
         6,
         9,
         13,
@@ -2421,46 +2280,188 @@ window.MODEL_DATA = {
         26,
         35
       ],
-      "bonus": [
-        7,
-        31
-      ]
+      "model": "V5+V6",
+      "ranked_sets": [
+        {
+          "rank": 1,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 2,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 3,
+          "main_hits": 3,
+          "matched_main_numbers": [
+            16,
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 4,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 5,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        }
+      ],
+      "best_main_hits": 3,
+      "num_grand_winners": 0,
+      "metrics": {}
     },
     {
-      "date": "2026-10-17",
-      "drawNo": "436/26",
-      "main": [
-        5,
-        8,
-        11,
-        13,
-        14,
-        20,
-        25,
-        27
+      "draw_date": "2026-10-21",
+      "draw_no": "438/26",
+      "actual_main": [
+        3,
+        16,
+        18,
+        26,
+        29,
+        32,
+        35,
+        36
       ],
-      "bonus": [
-        2,
-        10
-      ]
+      "model": "V6_CONSENSUS",
+      "ranked_sets": [
+        {
+          "rank": 1,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 2,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 3,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 4,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 5,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        }
+      ],
+      "best_main_hits": 1,
+      "num_grand_winners": 0,
+      "metrics": {
+        "brier": 0.17380862099911396,
+        "logloss": 0.5325406563462436,
+        "fair_brier": 0.1728395061728395,
+        "fair_logloss": 0.5297061990576545
+      }
     },
     {
-      "date": "2026-10-18",
-      "drawNo": "437/26",
-      "main": [
-        9,
-        10,
-        19,
-        20,
-        21,
-        22,
-        33,
-        35
-      ],
-      "bonus": [
+      "draw_date": "2026-10-24",
+      "draw_no": "439/26",
+      "actual_main": [
         6,
-        18
-      ]
+        11,
+        12,
+        14,
+        22,
+        27,
+        28,
+        32
+      ],
+      "model": "V6_CONSENSUS",
+      "ranked_sets": [
+        {
+          "rank": 1,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 2,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 3,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 4,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 5,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        }
+      ],
+      "best_main_hits": 1,
+      "num_grand_winners": 0,
+      "metrics": {
+        "brier": 0.1736613582215333,
+        "logloss": 0.5320558741275982,
+        "fair_brier": 0.1728395061728395,
+        "fair_logloss": 0.5297061990576545
+      }
     }
   ]
 };
