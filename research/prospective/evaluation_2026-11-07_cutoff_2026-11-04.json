@@ -1,0 +1,205 @@
+{
+  "record_type": "prospective_evaluation",
+  "generated_for_forecast": "2026-11-07",
+  "data_cutoff": "2026-11-04",
+  "source": "2026 Magnum Life draw history independently checked against published results; only records frozen before their actual draws were scored",
+  "records": [
+    {
+      "draw_date": "2026-10-14",
+      "draw_no": null,
+      "actual_main": [
+        6,
+        9,
+        13,
+        14,
+        16,
+        24,
+        26,
+        35
+      ],
+      "model": "V5+V6",
+      "ranked_sets": [
+        {
+          "rank": 1,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 2,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 3,
+          "main_hits": 3,
+          "matched_main_numbers": [
+            16,
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 4,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 5,
+          "main_hits": 2,
+          "matched_main_numbers": [
+            26,
+            35
+          ],
+          "grand_prize_hit": false
+        }
+      ],
+      "best_main_hits": 3,
+      "num_grand_winners": 0,
+      "metrics": {}
+    },
+    {
+      "draw_date": "2026-10-21",
+      "draw_no": "438/26",
+      "actual_main": [
+        3,
+        16,
+        18,
+        26,
+        29,
+        32,
+        35,
+        36
+      ],
+      "model": "V6_CONSENSUS",
+      "ranked_sets": [
+        {
+          "rank": 1,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 2,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 3,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 4,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 5,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            35
+          ],
+          "grand_prize_hit": false
+        }
+      ],
+      "best_main_hits": 1,
+      "num_grand_winners": 0,
+      "metrics": {
+        "brier": 0.17380862099911396,
+        "logloss": 0.5325406563462436,
+        "fair_brier": 0.1728395061728395,
+        "fair_logloss": 0.5297061990576545
+      }
+    },
+    {
+      "draw_date": "2026-10-24",
+      "draw_no": "439/26",
+      "actual_main": [
+        6,
+        11,
+        12,
+        14,
+        22,
+        27,
+        28,
+        32
+      ],
+      "model": "V6_CONSENSUS",
+      "ranked_sets": [
+        {
+          "rank": 1,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 2,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 3,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 4,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        },
+        {
+          "rank": 5,
+          "main_hits": 1,
+          "matched_main_numbers": [
+            28
+          ],
+          "grand_prize_hit": false
+        }
+      ],
+      "best_main_hits": 1,
+      "num_grand_winners": 0,
+      "metrics": {
+        "brier": 0.1736613582215333,
+        "logloss": 0.5320558741275982,
+        "fair_brier": 0.1728395061728395,
+        "fair_logloss": 0.5297061990576545
+      }
+    }
+  ],
+  "note": "Append-only evaluation, no historic forecast modified. Ordinary hit counts are not proof of predictive significance."
+}
